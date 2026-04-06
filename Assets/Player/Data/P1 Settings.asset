@@ -42,4 +42,4 @@ MonoBehaviour:
   crouchSmoothTime: 0.2
   throwForce: 500
   rotationSensitivity: 0.46
-  pickUpRange: 5
+  pickUpRange: 2
