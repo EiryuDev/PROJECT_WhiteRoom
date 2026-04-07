@@ -27,11 +27,6 @@ ModelImporter:
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
-      name: Material
-    second: {fileID: 2100000, guid: bf526b3dfea8dc648b594e6cbe33340d, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
       name: Material.001
     second: {fileID: 2100000, guid: c9da80fc36040dd45813fbe1ce096e82, type: 2}
   - first:
@@ -52,48 +47,53 @@ ModelImporter:
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
+      name: Material.005
+    second: {fileID: 2100000, guid: aefbe27ed6a26eb4397701140f264429, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
       name: Material.012
     second: {fileID: 2100000, guid: caf6e1219a3a0a84e9d247c2c0f299ec, type: 2}
   - first:
       type: UnityEngine:Texture2D
       assembly: UnityEngine.CoreModule
       name: color_map
-    second: {fileID: 2800000, guid: c3d2b46f078c14e40ad723193e973338, type: 3}
+    second: {fileID: 2800000, guid: 1be6219949f4c4b4f8d94447db87de34, type: 3}
   - first:
       type: UnityEngine:Texture2D
       assembly: UnityEngine.CoreModule
       name: greymarble_11_basecolor-2K
-    second: {fileID: 2800000, guid: e5e401d8846a95a43867f0733bb019b0, type: 3}
+    second: {fileID: 2800000, guid: d36bbaa701b07ca4b924950ea154c72d, type: 3}
   - first:
       type: UnityEngine:Texture2D
       assembly: UnityEngine.CoreModule
       name: greymarble_11_metallic-2K
-    second: {fileID: 2800000, guid: 2b61c23ccd8774c40bbff500bfac9a47, type: 3}
+    second: {fileID: 2800000, guid: 764f3ef127418bc4ca8c2e70f1e3992e, type: 3}
   - first:
       type: UnityEngine:Texture2D
       assembly: UnityEngine.CoreModule
       name: greymarble_11_roughness-2K
-    second: {fileID: 2800000, guid: 20a74956389163248aa80409d442ff4b, type: 3}
+    second: {fileID: 2800000, guid: 1f7529a7d1238aa4b86cfa61e0ff820b, type: 3}
   - first:
       type: UnityEngine:Texture2D
       assembly: UnityEngine.CoreModule
       name: greymarble_5_basecolor-2K
-    second: {fileID: 2800000, guid: ca094c8f5ba6b344f9d2433d48788ed2, type: 3}
+    second: {fileID: 2800000, guid: de73b8b219d6cc941898ced1a73fa4b3, type: 3}
   - first:
       type: UnityEngine:Texture2D
       assembly: UnityEngine.CoreModule
       name: greymarble_5_metallic-2K
-    second: {fileID: 2800000, guid: ba0c34b48c8a5bd4c859c62d098b9459, type: 3}
+    second: {fileID: 2800000, guid: 94c05b42fbb879b4cb3621005a26248c, type: 3}
   - first:
       type: UnityEngine:Texture2D
       assembly: UnityEngine.CoreModule
       name: greymarble_5_roughness-2K
-    second: {fileID: 2800000, guid: 43aaf9a6378cd854999a281c157e4f39, type: 3}
+    second: {fileID: 2800000, guid: 1e526cc73522379448951482edfc2672, type: 3}
   - first:
       type: UnityEngine:Texture2D
       assembly: UnityEngine.CoreModule
       name: roughness_map
-    second: {fileID: 2800000, guid: 9349719df73186a4d954dad605ae420a, type: 3}
+    second: {fileID: 2800000, guid: 962c35f7ba26efc42b057b6c373ed4bd, type: 3}
   materials:
     materialImportMode: 2
     materialName: 0
@@ -181,7 +181,7 @@ ModelImporter:
     armStretch: 0.05
     legStretch: 0.05
     feetSpacing: 0
-    globalScale: 0.005
+    globalScale: 0.5
     rootMotionBoneName: 
     hasTranslationDoF: 0
     hasExtraRoot: 0

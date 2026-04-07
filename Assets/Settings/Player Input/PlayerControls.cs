@@ -461,6 +461,24 @@ namespace WEV.WhiteRoom
                     ""processors"": """",
                     ""interactions"": ""Tap"",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""RB"",
+                    ""type"": ""Button"",
+                    ""id"": ""96f54111-9610-41ad-807a-5ccc208a295c"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""RT"",
+                    ""type"": ""Button"",
+                    ""id"": ""504fddc1-7f65-499d-947b-e0fbd72ee946"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -505,6 +523,50 @@ namespace WEV.WhiteRoom
                     ""processors"": """",
                     ""groups"": """",
                     ""action"": ""Throw"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""49eded9b-d0a7-45bd-828b-02ef346ada10"",
+                    ""path"": ""<Gamepad>/rightShoulder"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""RB"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""01924209-efa0-4348-b593-bf512ad9e7d2"",
+                    ""path"": ""<Mouse>/leftButton"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""RB"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""c2cc34fb-2e87-4e65-ada7-703a9ca066b7"",
+                    ""path"": ""<Gamepad>/rightTrigger"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""RT"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""b90deb85-2966-4f4e-a7b1-f956a9bb8778"",
+                    ""path"": ""<Mouse>/rightButton"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""RT"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 },
@@ -746,6 +808,8 @@ namespace WEV.WhiteRoom
             m_PlayerActions_Interact = m_PlayerActions.FindAction("Interact", throwIfNotFound: true);
             m_PlayerActions_Rotate = m_PlayerActions.FindAction("Rotate", throwIfNotFound: true);
             m_PlayerActions_Throw = m_PlayerActions.FindAction("Throw", throwIfNotFound: true);
+            m_PlayerActions_RB = m_PlayerActions.FindAction("RB", throwIfNotFound: true);
+            m_PlayerActions_RT = m_PlayerActions.FindAction("RT", throwIfNotFound: true);
             // Player UI
             m_PlayerUI = asset.FindActionMap("Player UI", throwIfNotFound: true);
             m_PlayerUI_Inventory = m_PlayerUI.FindAction("Inventory", throwIfNotFound: true);
@@ -1098,6 +1162,8 @@ namespace WEV.WhiteRoom
         private readonly InputAction m_PlayerActions_Interact;
         private readonly InputAction m_PlayerActions_Rotate;
         private readonly InputAction m_PlayerActions_Throw;
+        private readonly InputAction m_PlayerActions_RB;
+        private readonly InputAction m_PlayerActions_RT;
         /// <summary>
         /// Provides access to input actions defined in input action map "Player Actions".
         /// </summary>
@@ -1121,6 +1187,14 @@ namespace WEV.WhiteRoom
             /// Provides access to the underlying input action "PlayerActions/Throw".
             /// </summary>
             public InputAction @Throw => m_Wrapper.m_PlayerActions_Throw;
+            /// <summary>
+            /// Provides access to the underlying input action "PlayerActions/RB".
+            /// </summary>
+            public InputAction @RB => m_Wrapper.m_PlayerActions_RB;
+            /// <summary>
+            /// Provides access to the underlying input action "PlayerActions/RT".
+            /// </summary>
+            public InputAction @RT => m_Wrapper.m_PlayerActions_RT;
             /// <summary>
             /// Provides access to the underlying input action map instance.
             /// </summary>
@@ -1156,6 +1230,12 @@ namespace WEV.WhiteRoom
                 @Throw.started += instance.OnThrow;
                 @Throw.performed += instance.OnThrow;
                 @Throw.canceled += instance.OnThrow;
+                @RB.started += instance.OnRB;
+                @RB.performed += instance.OnRB;
+                @RB.canceled += instance.OnRB;
+                @RT.started += instance.OnRT;
+                @RT.performed += instance.OnRT;
+                @RT.canceled += instance.OnRT;
             }
 
             /// <summary>
@@ -1176,6 +1256,12 @@ namespace WEV.WhiteRoom
                 @Throw.started -= instance.OnThrow;
                 @Throw.performed -= instance.OnThrow;
                 @Throw.canceled -= instance.OnThrow;
+                @RB.started -= instance.OnRB;
+                @RB.performed -= instance.OnRB;
+                @RB.canceled -= instance.OnRB;
+                @RT.started -= instance.OnRT;
+                @RT.performed -= instance.OnRT;
+                @RT.canceled -= instance.OnRT;
             }
 
             /// <summary>
@@ -1460,6 +1546,20 @@ namespace WEV.WhiteRoom
             /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
             /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
             void OnThrow(InputAction.CallbackContext context);
+            /// <summary>
+            /// Method invoked when associated input action "RB" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+            /// </summary>
+            /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
+            /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
+            /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
+            void OnRB(InputAction.CallbackContext context);
+            /// <summary>
+            /// Method invoked when associated input action "RT" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+            /// </summary>
+            /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
+            /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
+            /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
+            void OnRT(InputAction.CallbackContext context);
         }
         /// <summary>
         /// Interface to implement callback methods for all input action callbacks associated with input actions defined by "Player UI" which allows adding and removing callbacks.

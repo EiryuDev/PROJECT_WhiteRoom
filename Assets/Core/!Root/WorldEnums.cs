@@ -5,6 +5,12 @@ namespace WEV.WhiteRoom
     public class WorldEnums : MonoBehaviour
     {
     }
+
+    public enum CharacterGroup 
+    { 
+	Player, 
+	Enemy
+    }
     
     // Location
     public enum WorldAreaLocation 

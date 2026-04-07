@@ -25,6 +25,8 @@ namespace WEV.WhiteRoom
         public bool rotateInput = false;
         public bool throwInput = false;
         public bool jumpInputHandled;
+        [SerializeField] bool rbInput = false; 
+        [SerializeField] bool rtInput = false; 
 
         private bool crouchPressedThisFrame = false;
 
@@ -84,6 +86,9 @@ namespace WEV.WhiteRoom
                 // THROW (TAP)
                 playerControls.PlayerActions.Throw.performed += 
                     i => throwInput = true;
+
+                playerControls.PlayerActions.RB.performed += i => rbInput = true;
+                playerControls.PlayerActions.RT.performed += i => rtInput = true;
             }
 
             playerControls.Enable();
@@ -100,11 +105,17 @@ namespace WEV.WhiteRoom
 
         public void UseAllInputs()
         {
+            // Movement
             UseMovementInput();
             UseJumpInput();
             UseCrouchInput();
 
+            // Interact
             UseInteractInput();
+
+            // Weapon
+            UseRBInput();
+            UseRTInput();
         }
 
         public void UseMovementInput()
@@ -151,6 +162,36 @@ namespace WEV.WhiteRoom
                 interactInput = false;
 
                 player.playerInteractionManager.Interact();
+            }
+        }
+
+        private void UseRBInput()
+        {
+            if(rbInput)
+            {
+                rbInput = false;
+
+                // TO-DO: If we have a UI window open, return and do nothing
+
+                player.playerCombatManager.SetPlayerActionHand(true);
+
+                if(player.playerInventoryManager.currentRightHandWeapon.oh_RB_Action != null)
+                    player.playerCombatManager.PerformWeaponBasedAction(player.playerInventoryManager.currentRightHandWeapon.oh_RB_Action, player.playerInventoryManager.currentRightHandWeapon);
+            }
+        }
+
+        private void UseRTInput()
+        {
+            if (rtInput)
+            {
+                rtInput = false;
+
+                // TO-DO: If we have a UI window open, return and do nothing
+
+                player.playerCombatManager.SetPlayerActionHand(true);
+
+                if(player.playerInventoryManager.currentRightHandWeapon.oh_RT_Action != null)
+                    player.playerCombatManager.PerformWeaponBasedAction(player.playerInventoryManager.currentRightHandWeapon.oh_RT_Action, player.playerInventoryManager.currentRightHandWeapon);
             }
         }
     }

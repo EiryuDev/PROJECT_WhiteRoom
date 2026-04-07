@@ -25,6 +25,20 @@ namespace WEV.WhiteRoom
             //lockOnTransform = GetComponentInChildren<WRLD_UTILITY_LOCK_ON_TRANSFORM>().transform;
         }
 
+        public void SetPlayerActionHand(bool rightHandedAction)
+        {
+            if(rightHandedAction)
+            {
+                isUsingLeftHand = false;
+                isUsingRightHand = true;
+            }
+            else
+            {
+                isUsingRightHand = false;
+                isUsingLeftHand = true;
+            }
+        }
+
         public void PerformWeaponBasedAction(WorldWeaponItemAction weaponAction, ItemWeapon weaponPerformingAction)
         {
             // BELOW CODE: Perform the action
