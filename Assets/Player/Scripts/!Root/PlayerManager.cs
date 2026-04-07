@@ -9,6 +9,10 @@ namespace WEV.WhiteRoom
         [HideInInspector] public PlayerLocomotionManager playerLocomotionManager;
         [HideInInspector] public PlayerAnimatorManager playerAnimatorManager;
         [HideInInspector] public PlayerInventoryManager playerInventoryManager;
+        [HideInInspector] public PlayerUIManager playerUIManager;
+
+        [Header("AREA")] 
+        public WorldLocationSceneSet areaCurrentlyIn;
 
         protected override void Awake()
         {
@@ -18,6 +22,7 @@ namespace WEV.WhiteRoom
             playerLocomotionManager = GetComponent<PlayerLocomotionManager>();
             playerAnimatorManager = GetComponent<PlayerAnimatorManager>();
             playerInventoryManager = GetComponent<PlayerInventoryManager>();
+            playerUIManager = FindAnyObjectByType<PlayerUIManager>();
         }
         public void Update()
         {
