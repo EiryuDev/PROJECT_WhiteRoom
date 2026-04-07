@@ -2,7 +2,7 @@ using UnityEngine;
 
 namespace WEV.WhiteRoom
 {
-    [CreateAssetMenu(menuName = "White Room/Item/Player/Player Data")]
+    [CreateAssetMenu(menuName = "White Room/Player/Player Data")]
     public class ItemPlayer : Item
     {
         [Header("Movement Data")]

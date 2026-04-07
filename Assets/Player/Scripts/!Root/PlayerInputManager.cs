@@ -103,6 +103,8 @@ namespace WEV.WhiteRoom
             UseMovementInput();
             UseJumpInput();
             UseCrouchInput();
+
+            UseInteractInput();
         }
 
         public void UseMovementInput()
@@ -140,6 +142,15 @@ namespace WEV.WhiteRoom
             else if (!jump_Input)
             {
                 jumpInputHandled = false;
+            }
+        }
+        public void UseInteractInput()
+        {
+            if(interactInput)
+            {
+                interactInput = false;
+
+                player.playerInteractionManager.Interact();
             }
         }
     }

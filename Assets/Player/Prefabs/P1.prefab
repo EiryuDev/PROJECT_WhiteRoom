@@ -75,7 +75,7 @@ Camera:
   m_Depth: 0
   m_CullingMask:
     serializedVersion: 2
-    m_Bits: 247
+    m_Bits: 4343
   m_RenderingPath: -1
   m_TargetTexture: {fileID: 8400000, guid: 78e2ecfe75bfc10479904696cbce6420, type: 2}
   m_TargetDisplay: 0
@@ -327,6 +327,7 @@ GameObject:
   - component: {fileID: 5282171224618836347}
   - component: {fileID: 6722195026190240010}
   - component: {fileID: 1104928442692124664}
+  - component: {fileID: 623844812367192393}
   m_Layer: 6
   m_Name: P1
   m_TagString: Untagged
@@ -532,6 +533,9 @@ MonoBehaviour:
   playerLocomotionManager: {fileID: 0}
   playerAnimatorManager: {fileID: 0}
   playerInventoryManager: {fileID: 0}
+  playerInteractionManager: {fileID: 0}
+  playerUIManager: {fileID: 0}
+  areaCurrentlyIn: {fileID: 0}
 --- !u!114 &4625303944312337597
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -604,6 +608,21 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::WEV.WhiteRoom.PlayerInventoryManager
   player: {fileID: 0}
   currentPlayerDataBeingUsed: {fileID: 11400000, guid: 1c4555f99e7a57545bac6707ba5afe46, type: 2}
+  currentItemInHand: {fileID: 0}
+  itemsInInventory: []
+--- !u!114 &623844812367192393
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3323500443316398303}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 233da28ba818f354793e3416115d6a4b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::WEV.WhiteRoom.PlayerInteractionManager
+  currentInteractableActions: []
 --- !u!1 &3742228905712922211
 GameObject:
   m_ObjectHideFlags: 0

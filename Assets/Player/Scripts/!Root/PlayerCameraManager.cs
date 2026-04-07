@@ -18,10 +18,7 @@ namespace WEV.WhiteRoom
 
         private float xRotation = 0f;
         private float timer = 0.0f;
-        private GameObject heldObj;
-        private Rigidbody heldObjRb;
-        private bool canDrop = true;
-        private int LayerNumber;
+
         private float originalMouseSensitivityValue;
 
         // Crouch offset variables
@@ -39,8 +36,6 @@ namespace WEV.WhiteRoom
                 Debug.LogError("PlayerCamera is not assigned in the inspector.");
                 return;
             }
-
-            LayerNumber = LayerMask.NameToLayer("Hold");
             originalMouseSensitivityValue = player.playerInventoryManager.currentPlayerDataBeingUsed.mouseSensitivity;
 
             Cursor.lockState = CursorLockMode.Locked;
@@ -53,8 +48,7 @@ namespace WEV.WhiteRoom
             HandleHeadBobbing();
             HandleFieldOfView();
             HandleCameraSway();
-            HandleCrouchOffset(); 
-            UsePickupCameraMovement();
+            HandleCrouchOffset();
         }
 
         // Mouse Look
@@ -180,49 +174,6 @@ namespace WEV.WhiteRoom
             transform.localPosition = pos;
         }
 
-        // Pickup and throw system
-        private void UsePickupCameraMovement()
-        {
-            if (player.playerInputManager.interactInput)
-            {
-                player.playerInputManager.interactInput = false;
-
-                if (heldObj == null)
-                {
-                    RaycastHit hit;
-                    if (Physics.Raycast(transform.position, transform.forward, out hit, player.playerInventoryManager.currentPlayerDataBeingUsed.pickUpRange))
-                    {
-                        if (hit.transform.CompareTag("Pickup"))
-                        {
-                            PickUpObject(hit.transform.gameObject);
-                            Debug.Log(hit.transform.gameObject);
-                            return;
-                        }
-                    }
-                }
-                else if (canDrop)
-                {
-                    StopClipping();
-                    DropObject();
-                    return;
-                }
-            }
-
-            if (heldObj != null)
-            {
-                MoveObject();
-                RotateObject();
-
-                if (player.playerInputManager.throwInput && canDrop)
-                {
-                    player.playerInputManager.throwInput = false;
-
-                    StopClipping();
-                    ThrowObject();
-                }
-            }
-        }
-
         public IEnumerator ShakeCamera()
         {
             float elapsedTime = 0f;
@@ -242,38 +193,7 @@ namespace WEV.WhiteRoom
             playerCamera.transform.localPosition = originalCameraPosition;
         }
 
-        void PickUpObject(GameObject pickUpObj)
-        {
-            if (pickUpObj.GetComponent<Rigidbody>())
-            {
-                heldObj = pickUpObj;
-                heldObjRb = pickUpObj.GetComponent<Rigidbody>();
-
-                heldObjRb.isKinematic = true;
-                heldObj.transform.parent = holdPos;
-                heldObj.layer = LayerNumber;
-
-                Physics.IgnoreCollision(heldObj.GetComponent<Collider>(), player.GetComponent<Collider>(), true);
-            }
-        }
-
-        void DropObject()
-        {
-            Physics.IgnoreCollision(heldObj.GetComponent<Collider>(), player.GetComponent<Collider>(), false);
-
-            heldObj.layer = 0;
-            heldObjRb.isKinematic = false;
-            heldObj.transform.parent = null;
-
-            heldObj = null;
-        }
-
-        void MoveObject()
-        {
-            heldObj.transform.position = holdPos.position;
-        }
-
-        void RotateObject()
+        public void RotateObject(GameObject heldObj, bool canDrop)
         {
             if (player.playerInputManager.rotateInput)
             {
@@ -290,30 +210,6 @@ namespace WEV.WhiteRoom
             {
                 player.playerInventoryManager.currentPlayerDataBeingUsed.mouseSensitivity = originalMouseSensitivityValue;
                 canDrop = true;
-            }
-        }
-
-        void ThrowObject()
-        {
-            Physics.IgnoreCollision(heldObj.GetComponent<Collider>(), player.GetComponent<Collider>(), false);
-
-            heldObj.layer = 0;
-            heldObjRb.isKinematic = false;
-            heldObj.transform.parent = null;
-
-            heldObjRb.AddForce(transform.forward * player.playerInventoryManager.currentPlayerDataBeingUsed.throwForce);
-            heldObj = null;
-        }
-
-        void StopClipping()
-        {
-            float clipRange = Vector3.Distance(heldObj.transform.position, transform.position);
-
-            RaycastHit[] hits = Physics.RaycastAll(transform.position, transform.forward, clipRange);
-
-            if (hits.Length > 1)
-            {
-                heldObj.transform.position = transform.position + new Vector3(0f, -0.5f, 0f);
             }
         }
     }

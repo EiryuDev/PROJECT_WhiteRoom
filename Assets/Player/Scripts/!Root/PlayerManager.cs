@@ -9,6 +9,7 @@ namespace WEV.WhiteRoom
         [HideInInspector] public PlayerLocomotionManager playerLocomotionManager;
         [HideInInspector] public PlayerAnimatorManager playerAnimatorManager;
         [HideInInspector] public PlayerInventoryManager playerInventoryManager;
+        [HideInInspector] public PlayerInteractionManager playerInteractionManager;
         [HideInInspector] public PlayerUIManager playerUIManager;
 
         [Header("AREA")] 
@@ -22,12 +23,14 @@ namespace WEV.WhiteRoom
             playerLocomotionManager = GetComponent<PlayerLocomotionManager>();
             playerAnimatorManager = GetComponent<PlayerAnimatorManager>();
             playerInventoryManager = GetComponent<PlayerInventoryManager>();
+            playerInteractionManager = GetComponent<PlayerInteractionManager>();
             playerUIManager = FindAnyObjectByType<PlayerUIManager>();
         }
         public void Update()
         {
             playerInputManager.UseAllInputs();
             playerLocomotionManager.UseAllMovement();
+            playerInventoryManager.HandleHeldObject();
         }
         private void LateUpdate()
         {
