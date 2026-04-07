@@ -12,16 +12,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 86d35e34be95e18498a596da9df07457, type: 3}
   m_Name: P1 Settings
   m_EditorClassIdentifier: Assembly-CSharp::WEV.WhiteRoom.ItemPlayer
-  name: P1
-  icon: {fileID: 0}
-  lore: 
+  itemID: 0
+  itemName: 
+  itemIcon: {fileID: 0}
+  itemLore: 
+  maxItemAmount: 1
+  currentItemAmount: 1
+  itemType: 0
   movementSpeed: 10
   walkingSpeed: 10
   sprintingSpeed: 20
   mouseSensitivity: 5
   bobbingSpeed: 0.18
   bobbingAmount: 0
-  midpoint: 1.2
+  midpoint: 0.8
   baseFOV: 90
   swayAmount: 0.05
   swaySpeed: 4

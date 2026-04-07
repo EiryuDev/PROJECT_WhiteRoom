@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: c5533f6860e4d234a820be6b6f6c3b6a
+guid: acf3cd3134cce374589c020973501744
 ModelImporter:
   serializedVersion: 24200
   internalIDToNameTable: []
@@ -7,53 +7,93 @@ ModelImporter:
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
-      name: Fingers
-    second: {fileID: 2100000, guid: 858814d50336226469b94a897b4d7a98, type: 2}
+      name: Black Plastic
+    second: {fileID: 2100000, guid: 3fcebbb68edc9334495287402245300c, type: 2}
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
-      name: Hand
-    second: {fileID: 2100000, guid: f7d249d2f196cfc4c8774ee6b8d4aae8, type: 2}
+      name: Grey Marble
+    second: {fileID: 2100000, guid: ba93fefafa68bc245996d0e58cb8ad61, type: 2}
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
-      name: LowerArm
-    second: {fileID: 2100000, guid: a4246b971aa0e624bbe4876ed01b07ea, type: 2}
+      name: Grey Marble.001
+    second: {fileID: 2100000, guid: ed58c1d6fd7bc2549b1904b2862aab63, type: 2}
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
-      name: UpperArm
-    second: {fileID: 2100000, guid: cea000d11804bea4fb015adf3b8a29b7, type: 2}
+      name: Grey Natural Marble
+    second: {fileID: 2100000, guid: fdfdcc75e4cd2d645ae315be96df7612, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Material
+    second: {fileID: 2100000, guid: bf526b3dfea8dc648b594e6cbe33340d, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Material.001
+    second: {fileID: 2100000, guid: c9da80fc36040dd45813fbe1ce096e82, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Material.002
+    second: {fileID: 2100000, guid: 10a4aa75795f4de4ba7620b061f3467d, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Material.003
+    second: {fileID: 2100000, guid: 45621f84993edb3419c09d14afa2ded2, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Material.004
+    second: {fileID: 2100000, guid: c82b8e81f1f1d4c43a408ba04a6b8240, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Material.012
+    second: {fileID: 2100000, guid: caf6e1219a3a0a84e9d247c2c0f299ec, type: 2}
   - first:
       type: UnityEngine:Texture2D
       assembly: UnityEngine.CoreModule
-      name: Fingers_Metallic
-    second: {fileID: 2800000, guid: 947f2cf3f2cd6ad4484e9d056416de87, type: 3}
+      name: color_map
+    second: {fileID: 2800000, guid: c3d2b46f078c14e40ad723193e973338, type: 3}
   - first:
       type: UnityEngine:Texture2D
       assembly: UnityEngine.CoreModule
-      name: Fingers_Normal
-    second: {fileID: 2800000, guid: 8ad3ccad1367e394bac8826097fb1004, type: 3}
+      name: greymarble_11_basecolor-2K
+    second: {fileID: 2800000, guid: e5e401d8846a95a43867f0733bb019b0, type: 3}
   - first:
       type: UnityEngine:Texture2D
       assembly: UnityEngine.CoreModule
-      name: Fingers_Roughness
-    second: {fileID: 2800000, guid: b74bc7a8893481544be446165f7a4405, type: 3}
+      name: greymarble_11_metallic-2K
+    second: {fileID: 2800000, guid: 2b61c23ccd8774c40bbff500bfac9a47, type: 3}
   - first:
       type: UnityEngine:Texture2D
       assembly: UnityEngine.CoreModule
-      name: Hand_Metallic
-    second: {fileID: 2800000, guid: 9bf94f67c4b52304d87e04b2002f8511, type: 3}
+      name: greymarble_11_roughness-2K
+    second: {fileID: 2800000, guid: 20a74956389163248aa80409d442ff4b, type: 3}
   - first:
       type: UnityEngine:Texture2D
       assembly: UnityEngine.CoreModule
-      name: Hand_Normal
-    second: {fileID: 2800000, guid: 85f5dc6497a1c5447a34245631b3bc00, type: 3}
+      name: greymarble_5_basecolor-2K
+    second: {fileID: 2800000, guid: ca094c8f5ba6b344f9d2433d48788ed2, type: 3}
   - first:
       type: UnityEngine:Texture2D
       assembly: UnityEngine.CoreModule
-      name: Hand_Roughness
-    second: {fileID: 2800000, guid: 02f746a52cd690846b25930cf7ea9af4, type: 3}
+      name: greymarble_5_metallic-2K
+    second: {fileID: 2800000, guid: ba0c34b48c8a5bd4c859c62d098b9459, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: greymarble_5_roughness-2K
+    second: {fileID: 2800000, guid: 43aaf9a6378cd854999a281c157e4f39, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: roughness_map
+    second: {fileID: 2800000, guid: 9349719df73186a4d954dad605ae420a, type: 3}
   materials:
     materialImportMode: 2
     materialName: 0
@@ -83,7 +123,7 @@ ModelImporter:
     isReadable: 0
   meshes:
     lODScreenPercentages: []
-    globalScale: 2
+    globalScale: 0.5
     meshCompression: 0
     addColliders: 0
     useSRGBMaterialColor: 1
@@ -129,7 +169,7 @@ ModelImporter:
     blendShapeNormalImportMode: 1
     normalSmoothingSource: 0
   referencedClips: []
-  importAnimation: 1
+  importAnimation: 0
   humanDescription:
     serializedVersion: 3
     human: []
@@ -141,14 +181,14 @@ ModelImporter:
     armStretch: 0.05
     legStretch: 0.05
     feetSpacing: 0
-    globalScale: 0.02
+    globalScale: 0.005
     rootMotionBoneName: 
     hasTranslationDoF: 0
     hasExtraRoot: 0
     skeletonHasParents: 1
   lastHumanDescriptionAvatarSource: {instanceID: 0}
   autoGenerateAvatarMappingIfUnspecified: 1
-  animationType: 2
+  animationType: 0
   humanoidOversampling: 1
   avatarSetup: 0
   addHumanoidExtraRootOnlyWhenUsingAvatar: 1
