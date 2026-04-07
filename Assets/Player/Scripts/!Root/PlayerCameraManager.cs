@@ -19,6 +19,7 @@ namespace WEV.WhiteRoom
         private float xRotation = 0f;
         private float timer = 0.0f;
 
+        private Vector3 baseLocalPosition;
         private float originalMouseSensitivityValue;
 
         // Crouch offset variables
@@ -36,6 +37,8 @@ namespace WEV.WhiteRoom
                 Debug.LogError("PlayerCamera is not assigned in the inspector.");
                 return;
             }
+            
+            baseLocalPosition = transform.localPosition;
             originalMouseSensitivityValue = player.playerInventoryManager.currentPlayerDataBeingUsed.mouseSensitivity;
 
             Cursor.lockState = CursorLockMode.Locked;
@@ -145,9 +148,11 @@ namespace WEV.WhiteRoom
 
             Vector3 finalPosition = new Vector3(movementX, movementY, 0);
 
+            Vector3 targetPosition = baseLocalPosition + finalPosition;
+
             transform.localPosition = Vector3.Lerp(
                 transform.localPosition,
-                transform.localPosition + finalPosition,
+                targetPosition,
                 player.playerInventoryManager.currentPlayerDataBeingUsed.swaySpeed * Time.deltaTime
             );
         }

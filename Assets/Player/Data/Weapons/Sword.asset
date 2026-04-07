@@ -21,7 +21,7 @@ MonoBehaviour:
   itemType: 0
   weaponAnimator: {fileID: 22100000, guid: a1bce9d9bc4aab24594c5c5c8e15ac57, type: 2}
   weaponModelType: 0
-  weaponModel: {fileID: 7509489621929112, guid: aead7ac45bc0d2747881b1d2972054e2, type: 3}
+  weaponModel: {fileID: 2264697948707733660, guid: 54eda27fdd90c8844899a9a0f0803365, type: 3}
   strengthREQ: 10
   dexREQ: 10
   intREQ: 0

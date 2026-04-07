@@ -14,7 +14,9 @@ namespace WEV.WhiteRoom
         [HideInInspector] public CharacterAnimatorManager characterAnimatorManager;
         [HideInInspector] public CharacterStatsManager characterStatsManager;
         [HideInInspector] public CharacterInventoryManager characterInventoryManager;
+        [HideInInspector] public CharacterEquipmentManager characterEquipmentManager;
         [HideInInspector] public CharacterCombatManager characterCombatManager;
+        [HideInInspector] public CharacterSoundFXManager characterSoundFXManager;
 
         [Header("FLAGS")]
         public bool isPerformingAction = false;
@@ -33,7 +35,9 @@ namespace WEV.WhiteRoom
             characterAnimatorManager = GetComponent<CharacterAnimatorManager>();
             characterStatsManager = GetComponent<CharacterStatsManager>();
             characterInventoryManager = GetComponent<CharacterInventoryManager>();
+            characterEquipmentManager = GetComponent<CharacterEquipmentManager>();
             characterCombatManager = GetComponent<CharacterCombatManager>();
+            characterSoundFXManager = GetComponent<CharacterSoundFXManager>();
         }
         
         protected virtual void Start()

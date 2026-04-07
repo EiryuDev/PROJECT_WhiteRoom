@@ -10,8 +10,10 @@ namespace WEV.WhiteRoom
         [HideInInspector] public PlayerAnimatorManager playerAnimatorManager;
         [HideInInspector] public PlayerStatsManager playerStatsManager;
         [HideInInspector] public PlayerInventoryManager playerInventoryManager;
+        [HideInInspector] public PlayerEquipmentManager playerEquipmentManager;
         [HideInInspector] public PlayerCombatManager playerCombatManager;
         [HideInInspector] public PlayerInteractionManager playerInteractionManager;
+        [HideInInspector] public PlayerSoundFXManager playerSoundFXManager;
         [HideInInspector] public PlayerUIManager playerUIManager;
 
         [Header("AREA")] 
@@ -26,8 +28,10 @@ namespace WEV.WhiteRoom
             playerAnimatorManager = GetComponent<PlayerAnimatorManager>();
             playerStatsManager = GetComponent<PlayerStatsManager>();
             playerInventoryManager = GetComponent<PlayerInventoryManager>();
+            playerEquipmentManager = GetComponent<PlayerEquipmentManager>();
             playerCombatManager = GetComponent<PlayerCombatManager>();
             playerInteractionManager = GetComponent<PlayerInteractionManager>();
+            playerSoundFXManager = GetComponent<PlayerSoundFXManager>();
             playerUIManager = FindAnyObjectByType<PlayerUIManager>();
         }
 
