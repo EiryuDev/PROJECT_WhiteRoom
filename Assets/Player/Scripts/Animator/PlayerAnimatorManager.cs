@@ -12,9 +12,15 @@ namespace WEV.WhiteRoom
             player = GetComponent<PlayerManager>();
         }
 
-        public override void OnAnimatorMove()
+        private void OnAnimatorMove()
         {
-            base.OnAnimatorMove();
+            if(applyRootMotion)
+            {
+                // BELOW CODE: Take the rotation from particular animation and apply to the player rotation
+                Vector3 velocity = player.animator.deltaPosition;
+                player.controller.Move(velocity);
+                player.transform.rotation *= player.animator.deltaRotation;
+            }
         }
     }
 }

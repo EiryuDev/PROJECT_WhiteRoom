@@ -46,7 +46,7 @@ namespace WEV.WhiteRoom
         }
         private void UseGroundedMovement()
         {
-            if (!player.canMove || player.isPerformingAction || !player.isGrounded)
+            if (!canMove || player.isPerformingAction || !isGrounded)
                 return; // To stop the player from moving while interacting in the falling
 
             GetMovementValues();
@@ -55,7 +55,7 @@ namespace WEV.WhiteRoom
         private void MovePlayer()
         {
             float baseSpeed =
-                player.isSprinting ? player.playerInventoryManager.currentPlayerDataBeingUsed.sprintingSpeed :
+                isSprinting ? player.playerInventoryManager.currentPlayerDataBeingUsed.sprintingSpeed :
                 player.playerInputManager.moveAmount > 0.5f ? player.playerInventoryManager.currentPlayerDataBeingUsed.movementSpeed :
                 player.playerInventoryManager.currentPlayerDataBeingUsed.walkingSpeed;
 
@@ -79,7 +79,7 @@ namespace WEV.WhiteRoom
         }
         public void AttemptToPerformJump()
         {
-            if (player.canJump)
+            if (canJump)
             {
                 
                 // Get the player's forward movement direction
@@ -97,16 +97,16 @@ namespace WEV.WhiteRoom
         }
         private IEnumerator JumpCooldown()
         {
-            player.canJump = false;
+            canJump = false;
             yield return new WaitForSeconds(player.playerInventoryManager.currentPlayerDataBeingUsed.jumpCooldown);
-            player.canJump = true;
+            canJump = true;
         }
 
         public void UseJumpingMovement()
         {
-            character.isGrounded = Physics.CheckSphere(groundCheck.position, player.playerInventoryManager.currentPlayerDataBeingUsed.groundDistance, player.playerInventoryManager.currentPlayerDataBeingUsed.groundMask);
+            isGrounded = Physics.CheckSphere(groundCheck.position, player.playerInventoryManager.currentPlayerDataBeingUsed.groundDistance, player.playerInventoryManager.currentPlayerDataBeingUsed.groundMask);
 
-            if (character.isGrounded && velocity.y < 0)
+            if (isGrounded && velocity.y < 0)
             {
                 velocity.y = -2f;
             }
@@ -126,7 +126,7 @@ namespace WEV.WhiteRoom
 
         private void UseCrouch()
         {
-            if (!player.canCrouch)
+            if (!canCrouch)
                 return;
                 
             bool crouchHeld = player.playerInputManager.crouch_Input;
@@ -154,11 +154,7 @@ namespace WEV.WhiteRoom
             // Must be moving forward and grounded
             bool isMovingForward = player.playerInputManager.verticalInput > 0.5f;
 
-            player.isSprinting =
-                wantsToSprint &&
-                isMovingForward &&
-                player.isGrounded &&
-                !isCrouching;
+            isSprinting = wantsToSprint && isMovingForward && isGrounded && !isCrouching;
         }
     }
 }

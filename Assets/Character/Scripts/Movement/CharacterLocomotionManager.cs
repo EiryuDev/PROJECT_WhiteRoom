@@ -6,6 +6,15 @@ namespace WEV.WhiteRoom
     {
         [HideInInspector] public CharacterManager character; // Reference to the Character Manager script
 
+        [Header("MOVEMENT FLAGS")]
+        public bool canMove = true;
+        public bool canRotate = true;
+        public bool canCrouch = true;
+        public bool canJump = true;
+        public bool isMoving = false;
+        public bool isSprinting = false;
+        public bool isGrounded = true;
+
         protected virtual void Awake()
         {
             character = GetComponent<CharacterManager>();

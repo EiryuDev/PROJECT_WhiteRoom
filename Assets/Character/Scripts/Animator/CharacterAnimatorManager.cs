@@ -10,27 +10,15 @@ namespace WEV.WhiteRoom
         int horizontal; // For horizontal value
         int vertical; // For vertical value
 
-        
+        [Header("FLAGS")]
+        public bool applyRootMotion = false;
+
         protected virtual void Awake()
         {
             character = GetComponent<CharacterManager>();
 
             horizontal = Animator.StringToHash("Horizontal");
             vertical = Animator.StringToHash("Vertical");
-        }
-
-        public virtual void OnAnimatorMove()
-        {
-            if (character.isPerformingAction == false)
-                return;
-
-            if (character.applyRootMotion)
-            {
-                // BELOW CODE: Take the rotation from particular animation and apply to the character rotation
-                Vector3 velocity = character.animator.deltaPosition;
-                character.controller.Move(velocity);
-                character.transform.rotation *= character.animator.deltaRotation;
-            }
         }
 
         public void UpdateAnimatorMovementParameters(float horizontalMovement, float verticalMovement, bool isSprinting)
@@ -52,20 +40,60 @@ namespace WEV.WhiteRoom
             string targetAnim,
             bool isPerformingAction,
             bool applyRootMotion = true,
+            bool canRotate = false,
             bool canMove = false)
         {
-            character.applyRootMotion = applyRootMotion;
+            this.applyRootMotion = applyRootMotion;
             character.animator.CrossFade(targetAnim, 0.2f);
             // BELOW CODE: Can be used to stop character from attempting a new action
             // BELOW CODE: Example if you get damaged and perform damage animation
             // BELOW CODE: The below flag will turn true id player is stunned
             // BELOW CODE: We can then check for the flag before attempting a new action
             character.isPerformingAction = isPerformingAction;
-            character.canMove = canMove;
+            character.characterLocomotionManager.canRotate = canRotate;
+            character.characterLocomotionManager.canMove = canMove;
         }
+
+        public virtual void PlayTargetAttackActionAnimation(
+            ItemWeapon weapon,
+            AttackType attackType,
+            string targetAnimation,
+            bool isPerformingAction,
+            bool applyRootMotion = true,
+            bool canRotate = false,
+            bool canMove = false)
+        {
+            // BELOW CODE: Keep track of the last attack performed
+            // BELOW CODE: Keep track of current attack type (light, heavy, etc)
+            // BELOW CODE: Update animation set to the current weapons animations
+            // BELOW CODE: Decide if our attack can be parried or not
+            // BELOW CODE: Tell the network our "isAttacking" flag is active (for counter damage etc)
+            character.characterCombatManager.currentAttackType = attackType;
+            character.characterCombatManager.lastAttackAnimationPerformed = targetAnimation;
+            UpdateAnimatorController(weapon.weaponAnimator);
+            this.applyRootMotion = applyRootMotion;
+            character.animator.CrossFade(targetAnimation, 0.2f);
+            // BELOW CODE: Can be used to stop character from attempting new actions
+            // BELOW CODE: Example if you get damage and start performing damage animations
+            // BELOW CODE: Then the below flag will turn if player is stunned
+            // BELOW CODE: We can then check for this flag before attempting new actions
+            character.isPerformingAction = isPerformingAction;
+            character.characterLocomotionManager.canRotate = canRotate;
+            character.characterLocomotionManager.canMove = canMove;
+        }
+        
+        public void UpdateAnimatorController(AnimatorOverrideController weaponController)
+        {
+            character.animator.runtimeAnimatorController = weaponController;
+        }
+
         public void EnableCanMove()
         {
-            character.canMove = true;
+            character.characterLocomotionManager.canMove = true;
+        }
+        public void DisableCanMove()
+        {
+            character.characterLocomotionManager.canMove = false;
         }
         public void EnableIsInvulnerable()
         {

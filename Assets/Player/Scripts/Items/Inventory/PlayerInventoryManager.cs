@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace WEV.WhiteRoom
 {
-    public class PlayerInventoryManager : MonoBehaviour
+    public class PlayerInventoryManager : CharacterInventoryManager
     {
         [HideInInspector] public PlayerManager player;
 
@@ -16,13 +16,23 @@ namespace WEV.WhiteRoom
         [Tooltip("Contains all the items in the player's inventory.")]
         public List<Item> itemsInInventory; 
 
+        [Header("Weapon Settings")]
+        public ItemWeapon currentRightHandWeapon; 
+        public ItemWeapon currentLeftHandWeapon; 
+
+        [Header("Quick Slot Settings")]
+        public ItemWeapon[] weaponsInRightHandSlots = new ItemWeapon[3]; 
+        public int rightHandWeaponIndex = 0; 
+        public ItemWeapon[] weaponsInLeftHandSlots = new ItemWeapon[3];
+        public int leftHandWeaponIndex = 0;
 
         public GameObject currentHeldObject;
         private Rigidbody heldObjRb;
         private int holdLayer;
 
-        private void Awake()
+        protected override void Awake()
         {
+            base.Awake();
             player = GetComponent<PlayerManager>();
         }
 

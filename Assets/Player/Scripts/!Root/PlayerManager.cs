@@ -8,7 +8,9 @@ namespace WEV.WhiteRoom
         [HideInInspector] public PlayerInputManager playerInputManager;
         [HideInInspector] public PlayerLocomotionManager playerLocomotionManager;
         [HideInInspector] public PlayerAnimatorManager playerAnimatorManager;
+        [HideInInspector] public PlayerStatsManager playerStatsManager;
         [HideInInspector] public PlayerInventoryManager playerInventoryManager;
+        [HideInInspector] public PlayerCombatManager playerCombatManager;
         [HideInInspector] public PlayerInteractionManager playerInteractionManager;
         [HideInInspector] public PlayerUIManager playerUIManager;
 
@@ -22,10 +24,18 @@ namespace WEV.WhiteRoom
             playerInputManager = GetComponent<PlayerInputManager>();
             playerLocomotionManager = GetComponent<PlayerLocomotionManager>();
             playerAnimatorManager = GetComponent<PlayerAnimatorManager>();
+            playerStatsManager = GetComponent<PlayerStatsManager>();
             playerInventoryManager = GetComponent<PlayerInventoryManager>();
+            playerCombatManager = GetComponent<PlayerCombatManager>();
             playerInteractionManager = GetComponent<PlayerInteractionManager>();
             playerUIManager = FindAnyObjectByType<PlayerUIManager>();
         }
+
+        protected override void Start()
+        {
+            base.Start();
+        }
+
         public void Update()
         {
             playerInputManager.UseAllInputs();

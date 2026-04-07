@@ -110,7 +110,7 @@ namespace WEV.WhiteRoom
         // FOV (SPRINT)
         void HandleFieldOfView()
         {
-            if (player.isSprinting)
+            if (player.playerLocomotionManager.isSprinting)
             {
                 playerCamera.fieldOfView = Mathf.Lerp(
                     playerCamera.fieldOfView,
