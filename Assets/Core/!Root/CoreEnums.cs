@@ -28,14 +28,6 @@ namespace WEV.WhiteRoom
     }
 
     // Item
-    public enum ItemType 
-    { 
-        // Regular items are used as pickup, consumables
-        RegularItem, 
-        // Key item are specific quest item which can't be removed
-        KeyItem 
-    }
-
     public enum ItemPickUpType 
     { 
         World, 

@@ -148,6 +148,9 @@ namespace WEV.WhiteRoom
                 interactable.EnableInteraction();
             }
 
+            // BELOW CODE: Removes Item from inventory
+            RemovesCurrentItemInHand();
+
             currentHeldObject = null;
         }
 
@@ -164,6 +167,9 @@ namespace WEV.WhiteRoom
                 heldObjRb.isKinematic = false;
                 heldObjRb.AddForce(player.transform.forward * currentPlayerDataBeingUsed.throwForce);
             }
+
+            // BELOW CODE: Removes Item from inventory
+            RemovesCurrentItemInHand();
 
             currentHeldObject.transform.SetParent(null);
             currentHeldObject = null;
@@ -184,6 +190,16 @@ namespace WEV.WhiteRoom
                 player.playerInputManager.throwInput = false;
                 ThrowObject();
                 return;
+            }
+        }
+
+        public void RemovesCurrentItemInHand()
+        {
+            if (currentItemInHand != null)
+            {
+                currentItemInHand.currentItemAmount -= 1;
+                RemoveItemFromInventory(currentItemInHand);
+                currentItemInHand = null;
             }
         }
     }

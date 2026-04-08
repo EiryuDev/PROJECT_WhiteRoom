@@ -46,7 +46,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::WEV.WhiteRoom.CoreSoundFXManager
   physicalDamageSFX: []
-  pickUpItemSFX: {fileID: 0}
+  pickUpItemSFX: {fileID: 8300000, guid: 407f80ce5e48f7b42bc08fc72270926a, type: 3}
   hoverUISFX: {fileID: 0}
   confirmUISFX: {fileID: 0}
   cancelSFX: {fileID: 0}

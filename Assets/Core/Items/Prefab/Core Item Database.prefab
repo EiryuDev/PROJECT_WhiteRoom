@@ -48,5 +48,6 @@ MonoBehaviour:
   pickUpItemPrefab: {fileID: 0}
   weapons:
   - {fileID: 11400000, guid: 6bc3e95772f3e3042ab4d5b45d1e7f68, type: 2}
-  items:
-  - {fileID: 11400000, guid: 3b2733edd9387bb4f9f85912150b02a3, type: 2}
+  items: []
+  keys:
+  - {fileID: 11400000, guid: 7c6fd0ae8d147d144ae223efbc72f50a, type: 2}

@@ -1,0 +1,20 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d90fc12f6e5b580429b01c96d787b484, type: 3}
+  m_Name: Door_01_Key
+  m_EditorClassIdentifier: Assembly-CSharp::WEV.WhiteRoom.ItemKey
+  itemID: 1
+  itemName: Rusty Door Key
+  itemIcon: {fileID: 0}
+  itemLore: 'A Rusty Door Key : )'
+  maxItemAmount: 1
+  currentItemAmount: 4

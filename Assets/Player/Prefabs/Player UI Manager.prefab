@@ -768,6 +768,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::WEV.WhiteRoom.PlayerUIPopUpManager
   popUpMessageGameObject: {fileID: 3605959292272960203}
   popUpMessageText: {fileID: 4999962270669081884}
+  popUpOrganiser: {fileID: 4529783365322983500}
+  animatedPopUp: {fileID: 7564338096088702968, guid: db4e4d50d8a60fd4fad598cdf30871f2, type: 3}
 --- !u!1 &4791315532941551626
 GameObject:
   m_ObjectHideFlags: 0

@@ -17,6 +17,7 @@ namespace WEV.WhiteRoom
         [SerializeField] private string openDoorAnimation;
         [SerializeField] private string openedDoorAnimation;
         [SerializeField] private string closeDoorAnimation;
+        [SerializeField] private string closedDoorAnimation;
 
         [Header("SFX Settings")]
         [SerializeField] private AudioSource audioSource;
@@ -46,11 +47,13 @@ namespace WEV.WhiteRoom
             OnIsOpenChanged();
 
             CheckIfDoorIsAlreadyOpened();
+            CheckIfDoorIsAlreadyClosed();
         }
 
         private void DisableDoorInteractable()
         {
-            interactableCollider.enabled = false;
+            if(interactableCollider != null)
+                interactableCollider.enabled = false;
 
             for (int i = 0; i < leversAndButtons.Length; i++)
             {
@@ -85,6 +88,15 @@ namespace WEV.WhiteRoom
             }
         }
 
+        private void CheckIfDoorIsAlreadyClosed()
+        {
+            if (!isOpen)
+            {
+                animator.Play(closedDoorAnimation);
+                //interactableCollider.enabled = true;
+            }
+        }
+
         private bool PlayerHasKey(PlayerManager player)
         {
             bool hasKey = false;
@@ -115,6 +127,7 @@ namespace WEV.WhiteRoom
                 UseDoor();
                 player.playerInteractionManager.RemoveInteractionFromList(this);
                 PlayerUIManager.instance.playerUIPopUpManager.SendPlayerMessagePopUp("Used " + itemRequiredToOpen.itemName + ".");
+                itemRequiredToOpen.currentItemAmount -= 1;
                 player.playerInventoryManager.RemoveItemFromInventory(itemRequiredToOpen);
                 return;
             }
@@ -146,7 +159,8 @@ namespace WEV.WhiteRoom
         {
             animator.Play(openDoorAnimation);
             audioSource.PlayOneShot(doorOpeningSFX);
-            interactableCollider.enabled = false;
+            if (interactableCollider != null)
+                interactableCollider.enabled = false;
         }
 
         public void CloseDoor()

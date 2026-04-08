@@ -18,9 +18,6 @@ namespace WEV.WhiteRoom
         [Tooltip("What is the max amount of particular item?")]
         public int maxItemAmount = 1;
         [Tooltip("What is the current amount of particular item?")]
-        public int currentItemAmount = 1;
-
-        [Tooltip("The type of the particular item")]
-        public ItemType itemType; 
+        public int currentItemAmount;
     }
 }

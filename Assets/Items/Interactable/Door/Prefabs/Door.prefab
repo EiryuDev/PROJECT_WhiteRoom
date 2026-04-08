@@ -61,6 +61,7 @@ MonoBehaviour:
   openDoorAnimation: Door_Open_01
   openedDoorAnimation: Door_Opened_01
   closeDoorAnimation: Door_Close_01
+  closedDoorAnimation: Door_Closed_01
   audioSource: {fileID: 7452744131542247562}
   doorOpeningSFX: {fileID: 8300000, guid: e10747eb551edc64dbf63b282eb938f5, type: 3}
   doorCloseSFX: {fileID: 0}
