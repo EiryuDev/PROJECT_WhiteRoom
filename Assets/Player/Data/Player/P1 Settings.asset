@@ -19,9 +19,9 @@ MonoBehaviour:
   maxItemAmount: 1
   currentItemAmount: 1
   itemType: 0
-  movementSpeed: 10
-  walkingSpeed: 10
-  sprintingSpeed: 20
+  movementSpeed: 7
+  walkingSpeed: 7
+  sprintingSpeed: 10
   mouseSensitivity: 5
   bobbingSpeed: 0.18
   bobbingAmount: 0

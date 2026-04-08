@@ -21,8 +21,8 @@ namespace WEV.WhiteRoom
             if (playerPerformingAction.playerStatsManager.currentStamina <= 0)
                 return;
 
-            if (!playerPerformingAction.playerLocomotionManager.isGrounded)
-                return;
+            //if (!playerPerformingAction.playerLocomotionManager.isGrounded)
+            //    return;
             
             playerPerformingAction.playerCombatManager.isAttacking = true;
 
