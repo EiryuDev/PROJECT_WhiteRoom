@@ -92,7 +92,7 @@ namespace WEV.WhiteRoom
 
                 for (int i = 0; i < player.playerInventoryManager.weaponsInRightHandSlots.Length; i++)
                 {
-                    if (player.playerInventoryManager.weaponsInRightHandSlots[i].itemID != WorldItemDatabase.Instance.unarmedWeapon.itemID)
+                    if (player.playerInventoryManager.weaponsInRightHandSlots[i].itemID != CoreItemDatabase.Instance.unarmedWeapon.itemID)
                     {
                         weaponCount += 1;
 
@@ -107,7 +107,7 @@ namespace WEV.WhiteRoom
                 if (weaponCount <= 1)
                 {
                     player.playerInventoryManager.rightHandWeaponIndex = -1;
-                    selectedWeapon = WorldItemDatabase.Instance.unarmedWeapon;
+                    selectedWeapon = CoreItemDatabase.Instance.unarmedWeapon;
                 }
                 else
                 {
@@ -121,7 +121,7 @@ namespace WEV.WhiteRoom
             foreach(ItemWeapon weapon in player.playerInventoryManager.weaponsInRightHandSlots)
             {
                 // BELOW CODE: Check to see if the next potential weapon does not equal to the "unarmed" weapon
-                if (player.playerInventoryManager.weaponsInRightHandSlots[player.playerInventoryManager.rightHandWeaponIndex].itemID != WorldItemDatabase.Instance.unarmedWeapon.itemID)
+                if (player.playerInventoryManager.weaponsInRightHandSlots[player.playerInventoryManager.rightHandWeaponIndex].itemID != CoreItemDatabase.Instance.unarmedWeapon.itemID)
                 {
                     selectedWeapon = player.playerInventoryManager.weaponsInRightHandSlots[player.playerInventoryManager.rightHandWeaponIndex];
                     return;
@@ -158,7 +158,7 @@ namespace WEV.WhiteRoom
 
                 for (int i = 0; i < player.playerInventoryManager.weaponsInLeftHandSlots.Length; i++)
                 {
-                    if (player.playerInventoryManager.weaponsInLeftHandSlots[i].itemID != WorldItemDatabase.Instance.unarmedWeapon.itemID)
+                    if (player.playerInventoryManager.weaponsInLeftHandSlots[i].itemID != CoreItemDatabase.Instance.unarmedWeapon.itemID)
                     {
                         weaponCount += 1;
 
@@ -173,7 +173,7 @@ namespace WEV.WhiteRoom
                 if (weaponCount <= 1)
                 {
                     player.playerInventoryManager.leftHandWeaponIndex = -1;
-                    selectedWeapon = WorldItemDatabase.Instance.unarmedWeapon;
+                    selectedWeapon = CoreItemDatabase.Instance.unarmedWeapon;
                 }
                 else
                 {
@@ -187,7 +187,7 @@ namespace WEV.WhiteRoom
             foreach (ItemWeapon weapon in player.playerInventoryManager.weaponsInLeftHandSlots)
             {
                 // BELOW CODE: Check to see if the next potential weapon does not equal to the "unarmed" weapon
-                if (player.playerInventoryManager.weaponsInLeftHandSlots[player.playerInventoryManager.leftHandWeaponIndex].itemID != WorldItemDatabase.Instance.unarmedWeapon.itemID)
+                if (player.playerInventoryManager.weaponsInLeftHandSlots[player.playerInventoryManager.leftHandWeaponIndex].itemID != CoreItemDatabase.Instance.unarmedWeapon.itemID)
                 {
                     selectedWeapon = player.playerInventoryManager.weaponsInLeftHandSlots[player.playerInventoryManager.leftHandWeaponIndex];
                     return;
@@ -233,7 +233,7 @@ namespace WEV.WhiteRoom
                 // BELOW CODE: Open a trail
                 rightHandWeaponManager.ToggleWeaponTrail(true);
                 rightHandWeaponManager.meleeDamageHitbox.EnableDamageHitbox();
-                player.playerSoundFXManager.PlaySoundFX(WorldSoundFXManager.instance.ChooseRandomSFXFromArray(player.playerInventoryManager.currentRightHandWeapon.whooshes));
+                player.playerSoundFXManager.PlaySoundFX(CoreSoundFXManager.instance.ChooseRandomSFXFromArray(player.playerInventoryManager.currentRightHandWeapon.whooshes));
             }
             // BELOW CODE: Open left hand weapon damage hitbox
             else if (player.playerCombatManager.isUsingLeftHand)
@@ -241,7 +241,7 @@ namespace WEV.WhiteRoom
                 // BELOW CODE: Open a trail
                 leftHandWeaponManager.ToggleWeaponTrail(true);
                 leftHandWeaponManager.meleeDamageHitbox.EnableDamageHitbox();
-                player.playerSoundFXManager.PlaySoundFX(WorldSoundFXManager.instance.ChooseRandomSFXFromArray(player.playerInventoryManager.currentLeftHandWeapon.whooshes));
+                player.playerSoundFXManager.PlaySoundFX(CoreSoundFXManager.instance.ChooseRandomSFXFromArray(player.playerInventoryManager.currentLeftHandWeapon.whooshes));
             }
 
             // BELOW CODE: Play Weapon Whoosh sound effect

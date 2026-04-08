@@ -17,7 +17,7 @@ namespace WEV.WhiteRoom
         [HideInInspector] public PlayerUIManager playerUIManager;
 
         [Header("AREA")] 
-        public WorldLocationSceneSet areaCurrentlyIn;
+        public CoreLocationSceneSet areaCurrentlyIn;
 
         protected override void Awake()
         {

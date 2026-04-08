@@ -39,7 +39,7 @@ namespace WEV.WhiteRoom
             canvasGroup.alpha = 1;
             loadingScreen.SetActive(true);
         }
-        public void ActivateLoadingScreenUsingData(WorldLocationData locationData)
+        public void ActivateLoadingScreenUsingData(CoreLocationData locationData)
         {
             // BELOW CODE: If loading screen is already active, then return
             if(loadingScreen.activeSelf)
@@ -96,8 +96,8 @@ namespace WEV.WhiteRoom
             loadingScreen.SetActive(true);
             
             // BELOW CODE: Wait for all queued additive scenes to finish loading
-            while (WorldSceneManager.instance != null && 
-                   (WorldSceneManager.instance.quedScenesToLoad > 0 || WorldSceneManager.instance.sceneIsLoading))
+            while (CoreSceneManager.instance != null && 
+                   (CoreSceneManager.instance.quedScenesToLoad > 0 || CoreSceneManager.instance.sceneIsLoading))
             {
                 yield return null;
             }

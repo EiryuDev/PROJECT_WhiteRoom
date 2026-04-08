@@ -81,7 +81,7 @@ namespace WEV.WhiteRoom
                 return;
 
             AudioClip clip =
-                WorldSoundFXManager.instance
+                CoreSoundFXManager.instance
                 .ChooseRandomFootStepSoundBasedOnGround(steppedOnObject, player);
 
             if (clip != null)

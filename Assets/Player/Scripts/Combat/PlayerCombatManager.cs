@@ -39,7 +39,7 @@ namespace WEV.WhiteRoom
             }
         }
 
-        public void PerformWeaponBasedAction(WorldWeaponItemAction weaponAction, ItemWeapon weaponPerformingAction)
+        public void PerformWeaponBasedAction(CoreWeaponItemAction weaponAction, ItemWeapon weaponPerformingAction)
         {
             // BELOW CODE: Perform the action
             if(weaponPerformingAction != null)

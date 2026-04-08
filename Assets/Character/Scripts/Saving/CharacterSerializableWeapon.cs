@@ -9,7 +9,7 @@ namespace WEV.WhiteRoom
 
         public ItemWeapon GetWeapon()
         {
-            ItemWeapon weapon = WorldItemDatabase.Instance.GetWeaponFromSerializedData(this);
+            ItemWeapon weapon = CoreItemDatabase.Instance.GetWeaponFromSerializedData(this);
             return weapon;      
         }
         

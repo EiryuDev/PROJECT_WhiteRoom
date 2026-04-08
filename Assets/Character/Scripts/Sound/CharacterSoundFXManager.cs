@@ -44,13 +44,13 @@ namespace WEV.WhiteRoom
         public virtual void PlayDamageGruntSFX()
         {
             if(damageGrunts.Length > 0)
-                PlaySoundFX(WorldSoundFXManager.instance.ChooseRandomSFXFromArray(damageGrunts));
+                PlaySoundFX(CoreSoundFXManager.instance.ChooseRandomSFXFromArray(damageGrunts));
         }
 
         public virtual void PlayAttackGruntSFX()
         {
             if(attackGrunts.Length > 0)
-                PlaySoundFX(WorldSoundFXManager.instance.ChooseRandomSFXFromArray(attackGrunts));
+                PlaySoundFX(CoreSoundFXManager.instance.ChooseRandomSFXFromArray(attackGrunts));
         } 
 
         public virtual void PlayBlockSoundFX()
