@@ -143,7 +143,7 @@ PlayerSettings:
   loadStoreDebugModeEnabled: 0
   visionOSBundleVersion: 1.0
   tvOSBundleVersion: 1.0
-  bundleVersion: 0.1
+  bundleVersion: 0.2
   preloadedAssets:
   - {fileID: -944628639613478452, guid: 922b8766b8f612a4bbc028f8868c885e, type: 3}
   metroInputSource: 0
@@ -299,7 +299,7 @@ PlayerSettings:
   - m_BuildTarget: 
     m_Icons:
     - serializedVersion: 2
-      m_Icon: {fileID: 10305, guid: 0000000000000000f000000000000000, type: 0}
+      m_Icon: {fileID: 2800000, guid: dd29f35641da38647a1eeb1028211f1a, type: 3}
       m_Width: 128
       m_Height: 128
       m_Kind: 0
@@ -951,11 +951,11 @@ PlayerSettings:
   activeInputHandler: 1
   windowsGamepadBackendHint: 0
   enableDirectStorage: 0
-  cloudProjectId: 41b64c69-fe39-485d-bbbe-a559336f2179
+  cloudProjectId: ca451304-1271-4283-a489-0298a18dc7aa
   framebufferDepthMemorylessMode: 0
   qualitySettingsNames: []
   projectName: White Room
-  organizationId: gamaddict-studio
+  organizationId: wev-games
   cloudEnabled: 0
   legacyClampBlendShapeWeights: 0
   hmiLoadingImage: {fileID: 0}
