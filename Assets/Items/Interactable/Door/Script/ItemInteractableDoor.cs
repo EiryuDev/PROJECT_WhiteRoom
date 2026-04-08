@@ -43,7 +43,7 @@ namespace WEV.WhiteRoom
                     isOpen = true;
             }
 
-            OnIsOpenChanged(false, isOpen);
+            OnIsOpenChanged();
 
             CheckIfDoorIsAlreadyOpened();
         }
@@ -68,7 +68,7 @@ namespace WEV.WhiteRoom
             }
         }
 
-        private void OnIsOpenChanged(bool oldStatus, bool newStatus)
+        private void OnIsOpenChanged()
         {
             if (isOpen)
             {
@@ -137,7 +137,7 @@ namespace WEV.WhiteRoom
                 CoreSaveGameManager.instance.currentCharacterData.doorsOpened.Add(doorID);
             }
 
-            OnIsOpenChanged(false, true);
+            OnIsOpenChanged();
 
             AttemptToOpenDoor();
         }
