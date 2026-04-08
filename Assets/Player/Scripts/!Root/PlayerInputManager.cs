@@ -20,15 +20,15 @@ namespace WEV.WhiteRoom
         [Header("PLAYER ACTION INPUT")]
         public bool crouch_Input = false;
         public bool sprint_Input = false;
-        public bool jump_Input = false; 
+        public bool jump_Input = false;
+        public bool slide_Input = false; 
         public bool interactInput = false;
         public bool rotateInput = false;
         public bool throwInput = false;
         public bool jumpInputHandled;
         [SerializeField] bool rbInput = false; 
         [SerializeField] bool rtInput = false; 
-
-        private bool crouchPressedThisFrame = false;
+        [HideInInspector] public bool crouchPressedThisFrame = false;
 
         void Awake()
         {
@@ -62,6 +62,9 @@ namespace WEV.WhiteRoom
                 // CROUCH
                 playerControls.PlayerMovement.Crouch.performed += 
                     i => crouchPressedThisFrame = true;
+
+                // BELOW CODE: Calling slide input 
+                playerControls.PlayerMovement.Slide.performed += i => slide_Input = true;
 
                 // SPRINT
                 playerControls.PlayerMovement.Sprint.performed += 
@@ -137,8 +140,27 @@ namespace WEV.WhiteRoom
         {
             if (crouchPressedThisFrame)
             {
-                crouch_Input = !crouch_Input;
                 crouchPressedThisFrame = false;
+
+                // Sprint + Crouch pressed = Slide (fast-paced FPS behaviour)
+                if (player.playerLocomotionManager.isSprinting && player.playerLocomotionManager.isGrounded)
+                {
+                    player.playerLocomotionManager.AttemptToUseSliding();
+                }
+                // Not sprinting and not already sliding = toggle crouch
+                else if (!player.playerLocomotionManager.isSliding)
+                {
+                    crouch_Input = !crouch_Input;
+                }
+            }
+        }
+
+        public void UseSlideInput()
+        {
+            if (slide_Input && player.playerLocomotionManager.isGrounded && !player.playerLocomotionManager.isSliding)
+            {
+                slide_Input = false;
+                player.playerLocomotionManager.AttemptToUseSliding();
             }
         }
 

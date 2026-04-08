@@ -44,6 +44,11 @@ MonoBehaviour:
   crouchHeight: 0.65
   crouchOffsetY: -0.7
   crouchSmoothTime: 0.2
+  slideSpeed: 30
+  slideDuration: 0.5
+  slideHeight: 0.65
+  slideOffsetY: -0.7
+  slideSmoothTime: 0.2
   throwForce: 500
   rotationSensitivity: 0.46
   pickUpRange: 6

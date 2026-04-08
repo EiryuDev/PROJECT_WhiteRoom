@@ -129,6 +129,15 @@ namespace WEV.WhiteRoom
                     ""processors"": """",
                     ""interactions"": ""Tap"",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Slide"",
+                    ""type"": ""PassThrough"",
+                    ""id"": ""fd2b2eaf-42d9-4971-9c51-786786041d47"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": ""Hold"",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -294,6 +303,17 @@ namespace WEV.WhiteRoom
                     ""processors"": """",
                     ""groups"": """",
                     ""action"": ""Crouch"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""ef4981f5-4e5e-4de7-90c0-7875a527f657"",
+                    ""path"": ""<Keyboard>/ctrl"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Slide"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -797,6 +817,7 @@ namespace WEV.WhiteRoom
             m_PlayerMovement_Sprint = m_PlayerMovement.FindAction("Sprint", throwIfNotFound: true);
             m_PlayerMovement_Jump = m_PlayerMovement.FindAction("Jump", throwIfNotFound: true);
             m_PlayerMovement_Crouch = m_PlayerMovement.FindAction("Crouch", throwIfNotFound: true);
+            m_PlayerMovement_Slide = m_PlayerMovement.FindAction("Slide", throwIfNotFound: true);
             // Player Camera
             m_PlayerCamera = asset.FindActionMap("Player Camera", throwIfNotFound: true);
             m_PlayerCamera_Camera = m_PlayerCamera.FindAction("Camera", throwIfNotFound: true);
@@ -905,6 +926,7 @@ namespace WEV.WhiteRoom
         private readonly InputAction m_PlayerMovement_Sprint;
         private readonly InputAction m_PlayerMovement_Jump;
         private readonly InputAction m_PlayerMovement_Crouch;
+        private readonly InputAction m_PlayerMovement_Slide;
         /// <summary>
         /// Provides access to input actions defined in input action map "Player Movement".
         /// </summary>
@@ -932,6 +954,10 @@ namespace WEV.WhiteRoom
             /// Provides access to the underlying input action "PlayerMovement/Crouch".
             /// </summary>
             public InputAction @Crouch => m_Wrapper.m_PlayerMovement_Crouch;
+            /// <summary>
+            /// Provides access to the underlying input action "PlayerMovement/Slide".
+            /// </summary>
+            public InputAction @Slide => m_Wrapper.m_PlayerMovement_Slide;
             /// <summary>
             /// Provides access to the underlying input action map instance.
             /// </summary>
@@ -970,6 +996,9 @@ namespace WEV.WhiteRoom
                 @Crouch.started += instance.OnCrouch;
                 @Crouch.performed += instance.OnCrouch;
                 @Crouch.canceled += instance.OnCrouch;
+                @Slide.started += instance.OnSlide;
+                @Slide.performed += instance.OnSlide;
+                @Slide.canceled += instance.OnSlide;
             }
 
             /// <summary>
@@ -993,6 +1022,9 @@ namespace WEV.WhiteRoom
                 @Crouch.started -= instance.OnCrouch;
                 @Crouch.performed -= instance.OnCrouch;
                 @Crouch.canceled -= instance.OnCrouch;
+                @Slide.started -= instance.OnSlide;
+                @Slide.performed -= instance.OnSlide;
+                @Slide.canceled -= instance.OnSlide;
             }
 
             /// <summary>
@@ -1481,6 +1513,13 @@ namespace WEV.WhiteRoom
             /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
             /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
             void OnCrouch(InputAction.CallbackContext context);
+            /// <summary>
+            /// Method invoked when associated input action "Slide" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+            /// </summary>
+            /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
+            /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
+            /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
+            void OnSlide(InputAction.CallbackContext context);
         }
         /// <summary>
         /// Interface to implement callback methods for all input action callbacks associated with input actions defined by "Player Camera" which allows adding and removing callbacks.

@@ -5,7 +5,7 @@ namespace WEV.WhiteRoom
     [CreateAssetMenu(menuName = "White Room/Player/Player Data")]
     public class ItemPlayer : Item
     {
-        [Header("Movement Data")]
+        [Header("Movement Settings")]
         [Tooltip("How much is the movement speed")]
         public float movementSpeed = 3.0f; 
         [Tooltip("How much is the walking speed")]
@@ -13,7 +13,7 @@ namespace WEV.WhiteRoom
         [Tooltip("How much is the sprint speed")]
         public float sprintingSpeed = 3.0f;
 
-        [Header("Camera Data")] 
+        [Header("Camera Settings")] 
         [Tooltip("How much is the mouse Sensitivity?")]
         public float mouseSensitivity = 100f;
         [Header("Head bob Settings")]
@@ -43,7 +43,7 @@ namespace WEV.WhiteRoom
         [Tooltip("How much is the camera fov speed?")]
         public float fovChangeSpeed = 5f;
 
-        [Header("Jump Data")]
+        [Header("Jump Settings")]
         [Tooltip("How much is the jump force")]
         public float jumpForce = 10f; 
         [Tooltip("How long the player will jump")]
@@ -52,7 +52,7 @@ namespace WEV.WhiteRoom
         public float groundDistance = 0.4f;
         public LayerMask groundMask;
 
-        [Header("Crouch Data")]
+        [Header("Crouch Settings")]
         [Tooltip("How much is the crouch movement speed")]
         public float crouchMovementSpeed = 2f;
         [Tooltip("How much is the height of player when crouched?")]
@@ -62,6 +62,19 @@ namespace WEV.WhiteRoom
         public float crouchOffsetY = -0.55f;
         [Tooltip("How much is the smooth rate of crouch?")]
         public float crouchSmoothTime = 0.20f;
+
+        [Header("Sliding Settings")]
+        [Tooltip("How much is the sliding speed")]
+        public float slideSpeed = 10f;
+        [Tooltip("How much is the sliding duration")]
+        public float slideDuration = 1f;
+        [Tooltip("How much is the sliding Height")]
+        public float slideHeight = 0.5f;
+        [Header("Slide Camera Settings")]
+        [Tooltip("How much is the y offset of the slide camera?")]
+        public float slideOffsetY = -0.55f;
+        [Tooltip("How much is the smooth rate of slide?")]
+        public float slideSmoothTime = 0.20f;
 
         [Header("Pickup Settings")]
         [Tooltip("How much is the throw force?")] 

@@ -26,6 +26,10 @@ namespace WEV.WhiteRoom
         private float currentCrouchOffset;
         private float crouchVelocity;
 
+        // Slide offset variables
+        private float currentSlideOffset;
+        private float slideVelocity;
+
         void Awake()
         {
             player = GetComponentInParent<PlayerManager>();
@@ -52,6 +56,7 @@ namespace WEV.WhiteRoom
             HandleFieldOfView();
             HandleCameraSway();
             HandleCrouchOffset();
+            HandleSlideOffset();   
         }
 
         // Mouse Look
@@ -176,6 +181,28 @@ namespace WEV.WhiteRoom
             // Apply offset cleanly (no stacking)
             Vector3 pos = transform.localPosition;
             pos.y += currentCrouchOffset;
+            transform.localPosition = pos;
+        }
+
+        // Slide Offset Camera
+        void HandleSlideOffset()
+        {
+            bool isSliding = player.playerLocomotionManager.isSliding;
+
+            float targetOffset = isSliding
+                ? player.playerInventoryManager.currentPlayerDataBeingUsed.slideOffsetY
+                : 0f;
+
+            currentSlideOffset = Mathf.SmoothDamp(
+                currentSlideOffset,
+                targetOffset,
+                ref slideVelocity,
+                player.playerInventoryManager.currentPlayerDataBeingUsed.slideSmoothTime
+            );
+
+            // Apply offset cleanly (no stacking)
+            Vector3 pos = transform.localPosition;
+            pos.y += currentSlideOffset;
             transform.localPosition = pos;
         }
 
