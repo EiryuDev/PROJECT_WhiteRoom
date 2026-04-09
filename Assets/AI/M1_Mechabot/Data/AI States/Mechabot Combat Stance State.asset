@@ -1,0 +1,24 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ae52cc1758d917649b21e1cc2d0d9d36, type: 3}
+  m_Name: Mechabot Combat Stance State
+  m_EditorClassIdentifier: 
+  aiCharacterAttacks:
+  - {fileID: 11400000, guid: d437ad15fe25509419655ba75736e710, type: 2}
+  - {fileID: 11400000, guid: 8037ac77f65b67b4085ed493204dd28e, type: 2}
+  - {fileID: 11400000, guid: af4b062eed6af924f8df338087731c48, type: 2}
+  potentialAttacks: []
+  choosenAttack: {fileID: 0}
+  previousAttack: {fileID: 0}
+  canPerformCombo: 1
+  chanceToPerformCombo: 25
+  maximumEngagementDistance: 5

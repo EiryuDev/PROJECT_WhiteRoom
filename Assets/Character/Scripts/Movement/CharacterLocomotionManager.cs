@@ -14,12 +14,28 @@ namespace WEV.WhiteRoom
         public bool canSlide = true;
         public bool isMoving = false;
         public bool isSprinting = false;
+        public bool isJumping = false;
         public bool isSliding = false;
         public bool isGrounded = true;
 
         protected virtual void Awake()
         {
             character = GetComponent<CharacterManager>();
+        }
+
+        protected virtual void Update()
+        {
+
+        }
+
+        public void EnableCanRotate()
+        {
+            canRotate = true;
+        }
+
+        public void DisableCanRotate()
+        {
+            canRotate = false;
         }
     }
 }

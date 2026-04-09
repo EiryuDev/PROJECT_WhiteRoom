@@ -197,7 +197,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 358d9b28d0fd37f42a0bd1502a747833, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Lumimoth.ItemShop.UI_SkillPopUp
-  destroyAfterTime: 5
+  destroyAfterTime: 2
 --- !u!114 &3587566049197882237
 MonoBehaviour:
   m_ObjectHideFlags: 0

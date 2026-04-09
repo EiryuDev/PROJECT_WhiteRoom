@@ -35,6 +35,11 @@ namespace WEV.WhiteRoom
             character = GetComponent<CharacterManager>();
         }
 
+        protected virtual void Start()
+        {
+
+        }
+
         public int CalculateHealthBasedOnVitalityLevel(int vitality)
         {
             float health = 0;

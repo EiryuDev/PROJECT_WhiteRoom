@@ -7,6 +7,7 @@ TagManager:
   - Pickup
   - Tile
   - Dirt
+  - Character
   layers:
   - Default
   - TransparentFX
@@ -15,7 +16,7 @@ TagManager:
   - Water
   - UI
   - Character
-  - 
+  - Damageable Character
   - Hold
   - Arms
   - Damage Hitbox
@@ -37,8 +38,8 @@ TagManager:
   - 
   - 
   - 
-  - 
-  - 
+  - Proximity Activator Detector
+  - Proximity Activator
   - 
   m_SortingLayers:
   - name: Default

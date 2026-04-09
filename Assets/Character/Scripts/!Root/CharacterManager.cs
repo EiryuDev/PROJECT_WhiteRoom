@@ -18,6 +18,12 @@ namespace WEV.WhiteRoom
         [HideInInspector] public CharacterCombatManager characterCombatManager;
         [HideInInspector] public CharacterSoundFXManager characterSoundFXManager;
 
+        [Header("CHARACTER NAME")]
+        public string characterName = "";
+
+        [Header("CHARACTER GROUP")]
+        public CharacterGroup characterGroup;
+
         [Header("FLAGS")]
         public bool isPerformingAction = false;
         public bool isInvulnerable = false;
@@ -27,6 +33,8 @@ namespace WEV.WhiteRoom
 
         protected virtual void Awake()
         {
+            DontDestroyOnLoad(this);
+
             animator = GetComponent<Animator>();
             rigidBody = GetComponent<Rigidbody>();
             audioSource = GetComponent<AudioSource>();
@@ -43,9 +51,33 @@ namespace WEV.WhiteRoom
         protected virtual void Start()
         {
             IgnoreMyOwnColliders();
+        }
+
+        protected virtual void Update()
+        {
+            animator.SetBool("isGrounded", characterLocomotionManager.isGrounded);
             animator.SetBool("isMoving", characterLocomotionManager.isMoving);
         }
 
+        protected virtual void FixedUpdate()
+        {
+
+        }
+
+        protected virtual void LateUpdate()
+        {
+
+        }
+
+        protected virtual void OnEnable()
+        {
+
+        }
+
+        protected virtual void OnDisable()
+        {
+
+        }
         public virtual IEnumerator ProcessDeathEvent(bool manuallySelectDeathAnimation = false)
         {
             characterStatsManager.currentHealth = 0;

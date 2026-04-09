@@ -18,9 +18,6 @@ namespace WEV.WhiteRoom
         [HideInInspector] public PlayerSoundFXManager playerSoundFXManager;
         [HideInInspector] public PlayerUIManager playerUIManager;
 
-        [Header("Player Settings")]
-        public string characterName;
-
         [Header("AREA")] 
         public CoreLocationSceneSet areaCurrentlyIn;
 
@@ -45,14 +42,19 @@ namespace WEV.WhiteRoom
             base.Start();
         }
 
-        public void Update()
+        protected override void Update()
         {
+            base.Update();
+
             playerInputManager.UseAllInputs();
             playerLocomotionManager.UseAllMovement();
             playerInventoryManager.HandleHeldObject();
         }
-        private void LateUpdate()
+
+        protected override void LateUpdate()
         {
+            base.LateUpdate();
+
             playerCameraManager.UseAllCameraMovement();
         }
 

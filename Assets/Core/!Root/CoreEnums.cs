@@ -74,4 +74,11 @@ namespace WEV.WhiteRoom
         LeftHand, 
         BothHand
     }
+
+    // AI
+    public enum IdleStateMode 
+    {
+        Idle, 
+        Patrol
+    }
 }

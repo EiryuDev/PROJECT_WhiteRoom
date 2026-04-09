@@ -98,7 +98,7 @@ namespace WEV.WhiteRoom
 
             animatedPopUp.transform.SetSiblingIndex(0);
 
-            UI_AnimatedPopUp animatedPopUpUI = animatedPopUp.GetComponent<UI_AnimatedPopUp>();
+            UIAnimatedPopUp animatedPopUpUI = animatedPopUp.GetComponent<UIAnimatedPopUp>();
 
             animatedPopUpUI.StartCoroutine(
                 animatedPopUpUI.ShowAnimatedPopUp(item.itemName, itemAmount));
