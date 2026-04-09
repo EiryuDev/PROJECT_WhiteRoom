@@ -30,15 +30,17 @@ namespace WEV.WhiteRoom
             
             aiCharacter.aiCharacterLocomotionManager.RotateTowardsAgent(aiCharacter);
 
-            // BELOW CODE: If AI's within combat range of a target, switch to combat stance state
-            //if (aiCharacter.aiCharacterCombatManager.distanceFromTarget <= aiCharacter.combatStance.maximumEngagementDistance)
-            //    return SwitchState(aiCharacter, aiCharacter.combatStance);
+            /* BELOW CODE: Old System
             if (!aiCharacter.navMeshAgent.pathPending &&
                 aiCharacter.navMeshAgent.remainingDistance <= aiCharacter.navMeshAgent.stoppingDistance)
             {
                 return SwitchState(aiCharacter, aiCharacter.combatStance);
             }
+            */
 
+            // BELOW CODE: If AI's within combat range of a target, switch to combat stance state
+            if (aiCharacter.aiCharacterCombatManager.distanceFromTarget <= aiCharacter.combatStance.maximumEngagementDistance)
+                return SwitchState(aiCharacter, aiCharacter.combatStance);
 
             // BELOW CODE: If the target is not reachable, and target is far away, return back
 

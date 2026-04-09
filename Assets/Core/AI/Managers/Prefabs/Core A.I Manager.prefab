@@ -48,4 +48,5 @@ MonoBehaviour:
   aiCharacterSpawners: []
   spawnedInCharacters: []
   proximityActivatorGameObject: {fileID: 2585410191710267913, guid: 8a1cf9cfa0b866e4daa81f3e884e1b02, type: 3}
-  aiCharacterPatrolPaths: []
+  aiCharacterPatrolPaths:
+  - {fileID: 0}

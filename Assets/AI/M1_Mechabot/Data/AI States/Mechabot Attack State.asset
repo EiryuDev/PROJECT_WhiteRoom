@@ -14,4 +14,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   currentAttack: {fileID: 0}
   willPerformCombo: 0
-  pivotAfterAttack: 1
+  pivotAfterAttack: 0
