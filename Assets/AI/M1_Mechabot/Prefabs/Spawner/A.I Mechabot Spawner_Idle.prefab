@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 4114809776260917970}
   - component: {fileID: 3907948820427987615}
   m_Layer: 0
-  m_Name: A.I Mechabot Spawner
+  m_Name: A.I Mechabot Spawner_Idle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
