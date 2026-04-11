@@ -4,11 +4,13 @@ namespace WEV.WhiteRoom
 {
     public class CharacterWeaponManager : MonoBehaviour
     {
-        
+        [Header("Weapon Animator")]
+        public Animator weaponAnimator;
+
         [Header("TRAIL")] 
         [SerializeField] private ParticleSystem trail;
-        
         public CharacterMeleeWeaponDamageHitbox meleeDamageHitbox; // Reference to the Character Melee Damage Hitbox script
+
 
         private void Awake()
         {

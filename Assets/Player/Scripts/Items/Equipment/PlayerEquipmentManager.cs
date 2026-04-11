@@ -8,9 +8,6 @@ namespace WEV.WhiteRoom
         public CharacterWeaponHolderSlot rightHandSlot; // Reference to the Character Weapon Holder Slot script for right hand slot
         public CharacterWeaponHolderSlot leftHandWeaponSlot; // Reference to the Character Weapon Holder Slot script for left hand weapon slot
 
-        [SerializeField] CharacterWeaponManager rightHandWeaponManager; // Reference to the Character Weapon Manager for right hand weapon
-        [SerializeField] CharacterWeaponManager leftHandWeaponManager; // Reference to the Character Weapon Manager for left hand weapon
-
         public GameObject rightHandWeaponModel;  // Reference to the right hand weapon model
         public GameObject leftHandWeaponModel;  // Reference to the left hand weapon model
         protected override void Awake()

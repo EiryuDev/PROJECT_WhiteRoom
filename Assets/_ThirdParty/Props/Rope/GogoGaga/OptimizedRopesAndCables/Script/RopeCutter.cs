@@ -14,7 +14,7 @@ public class RopeCutter : MonoBehaviour
     private void OnTriggerEnter(Collider other)
     {
         Debug.Log("Collision detected with: " + other.gameObject.name);
-        if (other.CompareTag("sword"))
+        if (other.CompareTag("Hitbox"))
         {
             CutRope(other.ClosestPoint(transform.position));
             Debug.Log("Rope cut at position: " + other.ClosestPoint(transform.position));

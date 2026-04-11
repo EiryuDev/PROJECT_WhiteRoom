@@ -70,9 +70,9 @@ namespace WEV.WhiteRoom
             // BELOW CODE: Tell the network our "isAttacking" flag is active (for counter damage etc)
             character.characterCombatManager.currentAttackType = attackType;
             character.characterCombatManager.lastAttackAnimationPerformed = targetAnimation;
-            UpdateAnimatorController(weapon.weaponAnimator);
+            //UpdateAnimatorController(weapon.weaponAnimator);
             this.applyRootMotion = applyRootMotion;
-            character.animator.CrossFade(targetAnimation, 0.2f);
+            character.characterEquipmentManager.rightHandWeaponManager.weaponAnimator.CrossFade(targetAnimation, 0.2f);
             // BELOW CODE: Can be used to stop character from attempting new actions
             // BELOW CODE: Example if you get damage and start performing damage animations
             // BELOW CODE: Then the below flag will turn if player is stunned
