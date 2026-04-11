@@ -1,5 +1,7 @@
 using UnityEngine;
 using System;
+using System.Collections.Generic;
+
 #if UNITY_EDITOR
 using UnityEditor;
 #endif
@@ -71,8 +73,12 @@ namespace GogoGaga.OptimizedRopesAndCables
         private float prevstiffness;
         private float prevDampness;
         private float prevRopeLength;
-        
-        
+
+        [Header("Collision Settings")]
+        public bool generateColliders = true;
+        [SerializeField] private List<CapsuleCollider> colliders = new List<CapsuleCollider>();
+
+
         public bool IsPrefab => gameObject.scene.rootCount == 0;
         
         private void Start()
@@ -110,9 +116,11 @@ namespace GogoGaga.OptimizedRopesAndCables
             {
                 lineRenderer = GetComponent<LineRenderer>();
             }
-
-            lineRenderer.startWidth = ropeWidth;
-            lineRenderer.endWidth = ropeWidth;
+            if (lineRenderer != null)
+            {
+                lineRenderer.startWidth = ropeWidth;
+                lineRenderer.endWidth = ropeWidth;
+            }
         }
 
         private void Update()
@@ -121,10 +129,15 @@ namespace GogoGaga.OptimizedRopesAndCables
             {
                 return;
             }
-            
+            if (!lineRenderer)
+            {
+                lineRenderer = GetComponent<LineRenderer>();
+            }
             if (AreEndPointsValid())
             {
                 SetSplinePoint();
+
+                if (generateColliders) UpdateColliders();
 
                 if (!Application.isPlaying && (IsPointsMoved() || IsRopeSettingsChanged()))
                 {
@@ -152,6 +165,11 @@ namespace GogoGaga.OptimizedRopesAndCables
 
         private void SetSplinePoint()
         {
+            if (!lineRenderer)
+            {
+                return;
+            }
+
             if (lineRenderer.positionCount != linePoints + 1)
             {
                 lineRenderer.positionCount = linePoints + 1;
@@ -347,6 +365,53 @@ namespace GogoGaga.OptimizedRopesAndCables
                    || ropeLengthChanged
                    || midPointPositionChanged
                    || midPointWeightChanged;
+        }
+        public float GetClosestT(Vector3 worldPos)
+        {
+            float closestT = 0;
+            float minDest = float.MaxValue;
+            for (int i = 0; i <= linePoints; i++)
+            {
+                float t = i / (float)linePoints;
+                float dist = Vector3.Distance(worldPos, GetPointAt(t));
+                if (dist < minDest)
+                {
+                    minDest = dist;
+                    closestT = t;
+                }
+            }
+            return closestT;
+        }
+        private void UpdateColliders()
+        {
+            int requiredColliders = linePoints;
+
+            while (colliders.Count > requiredColliders)
+            {
+                Destroy(colliders[colliders.Count - 1].gameObject);
+                colliders.RemoveAt(colliders.Count - 1);
+            }
+
+            while (colliders.Count < requiredColliders)
+            {
+                GameObject go = new GameObject("RopeColliderSegment");
+                go.transform.SetParent(transform);
+                var cap = go.AddComponent<CapsuleCollider>();
+                cap.isTrigger = true; // Set to true so the sword can pass through
+                cap.radius = ropeWidth;
+                colliders.Add(cap);
+            }
+
+            for (int i = 0; i < colliders.Count; i++)
+            {
+                Vector3 pStart = lineRenderer.GetPosition(i);
+                Vector3 pEnd = lineRenderer.GetPosition(i + 1);
+
+                colliders[i].transform.position = (pStart + pEnd) / 2f;
+                colliders[i].direction = 2;
+                colliders[i].height = Vector3.Distance(pStart, pEnd) + (ropeWidth * 2);
+                colliders[i].transform.LookAt(pEnd);
+            }
         }
     }
 }

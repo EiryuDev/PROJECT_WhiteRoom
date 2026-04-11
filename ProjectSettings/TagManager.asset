@@ -8,6 +8,7 @@ TagManager:
   - Tile
   - Dirt
   - Character
+  - sword
   layers:
   - Default
   - TransparentFX
