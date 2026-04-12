@@ -10,8 +10,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 092662420a9eee0418e4453114a9830f, type: 3}
-  m_Name: Gameplay_01
+  m_Name: Player_01
   m_EditorClassIdentifier: Assembly-CSharp::WEV.WhiteRoom.WorldLocationData
-  locationName: Gameplay_01
+  locationName: Player_01
   locationImages:
   - {fileID: 21300000, guid: 0e67beec1e8c81649a3237437e74cd70, type: 3}

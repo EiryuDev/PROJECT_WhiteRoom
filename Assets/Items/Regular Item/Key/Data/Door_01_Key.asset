@@ -12,9 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d90fc12f6e5b580429b01c96d787b484, type: 3}
   m_Name: Door_01_Key
   m_EditorClassIdentifier: Assembly-CSharp::WEV.WhiteRoom.ItemKey
-  itemID: 1
+  itemID: 3
   itemName: Rusty Door Key
   itemIcon: {fileID: 0}
   itemLore: 'A Rusty Door Key : )'
   maxItemAmount: 1
-  currentItemAmount: 4
+  currentItemAmount: 0

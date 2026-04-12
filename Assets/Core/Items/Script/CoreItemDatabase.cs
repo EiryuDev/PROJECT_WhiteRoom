@@ -16,6 +16,8 @@ namespace WEV.WhiteRoom
         
         [Header("Item Settings")]
         [SerializeField] List<Item> items = new List<Item>();
+        [SerializeField] List<ItemRegular> regularItems = new List<ItemRegular>();
+        [SerializeField] List<ItemVital> vitalItems = new List<ItemVital>();
 
         [Header("Keys Settings")]
         [SerializeField] List<ItemKey> keys = new List<ItemKey>();
@@ -35,6 +37,18 @@ namespace WEV.WhiteRoom
             foreach(var weapon in weapons)
             {
                 items.Add(weapon);
+            }
+
+            // BELOW CODE: Add all of our regular items to the list of items
+            foreach (var regularItem in regularItems)
+            {
+                items.Add(regularItem);
+            }
+
+            // BELOW CODE: Add all of our vital items to the list of items
+            foreach (var vitalItem in vitalItems)
+            {
+                items.Add(vitalItem);
             }
 
             // BELOW CODE: Add all of our keys to the list of items
@@ -65,9 +79,45 @@ namespace WEV.WhiteRoom
             return weapons.FirstOrDefault(weapon => weapon.itemID == ID);
         }
 
+        public ItemRegular GetRegularItemByID(int ID)
+        {
+            return regularItems.FirstOrDefault(regularItem => regularItem.itemID == ID);
+        }
+
+        public ItemVital GetVitalItemByID(int ID)
+        {
+            return vitalItems.FirstOrDefault(vitalItem => vitalItem.itemID == ID);
+        }
+
         public ItemKey GetKeyByID(int ID)
         {
             return keys.FirstOrDefault(key => key.itemID == ID);
+        }
+
+        public ItemRegular GetRegularItemFromSerializedData(CharacterSerializableRegularItem serializableRegularItem)
+        {
+            ItemRegular itemRegular = null;
+
+            if (GetRegularItemByID(serializableRegularItem.itemID))
+                itemRegular = Instantiate(GetRegularItemByID(serializableRegularItem.itemID));
+
+            //if (item == null)
+            //    return Instantiate(unarmedWeapon);
+
+            return itemRegular;
+        }
+
+        public ItemVital GetVitalItemFromSerializedData(CharacterSerializableVitalItem serializableVitalItem)
+        {
+            ItemVital itemVital = null;
+
+            if (GetVitalItemByID(serializableVitalItem.itemID))
+                itemVital = Instantiate(GetVitalItemByID(serializableVitalItem.itemID));
+
+            //if (item == null)
+            //    return Instantiate(unarmedWeapon);
+
+            return itemVital;
         }
 
         public ItemWeapon GetWeaponFromSerializedData(CharacterSerializableWeapon serializableWeapon)

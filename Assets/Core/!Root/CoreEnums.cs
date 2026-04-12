@@ -24,7 +24,7 @@ namespace WEV.WhiteRoom
     // Location
     public enum WorldAreaLocation 
     { 
-        Gameplay_01
+        Player_01
     }
 
     // Item

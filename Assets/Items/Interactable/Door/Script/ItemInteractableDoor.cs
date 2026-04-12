@@ -120,8 +120,6 @@ namespace WEV.WhiteRoom
         {
             PlayerUIManager.instance.playerUIPopUpManager.CloseAllPopUpWindows();
 
-            CoreSaveGameManager.instance.SaveGame();
-
             if (requiresItem && PlayerHasKey(player))
             {
                 UseDoor();
@@ -139,6 +137,8 @@ namespace WEV.WhiteRoom
 
             UseDoor();
             player.playerInteractionManager.RemoveInteractionFromList(this);
+
+            CoreSaveGameManager.instance.SaveGame();
         }
 
         private void UseDoor()
@@ -167,13 +167,6 @@ namespace WEV.WhiteRoom
         {
             if (!isOpen)
                 return;
-
-            isOpen = false;
-
-            if (CoreSaveGameManager.instance.currentCharacterData.doorsOpened.Contains(doorID))
-            {
-                CoreSaveGameManager.instance.currentCharacterData.doorsOpened.Remove(doorID);
-            }
 
             animator.Play(closeDoorAnimation);
             audioSource.PlayOneShot(doorCloseSFX);

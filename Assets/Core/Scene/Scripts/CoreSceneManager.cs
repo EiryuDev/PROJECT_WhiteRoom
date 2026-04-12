@@ -55,8 +55,13 @@ namespace WEV.WhiteRoom
         {
             SceneManager.sceneLoaded -= OnSceneLoaded;
 
-            // Unload all scenes
-            StartCoroutine(UnloadAllAdditiveScenesNonNetwork());
+            for (int i = 0; i < loadedScenes.Count; i++)
+            {
+                if (loadedScenes[i].IsValid())
+                {
+                    SceneManager.UnloadSceneAsync(loadedScenes[i]);
+                }
+            }
         }
 
         private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
@@ -80,15 +85,26 @@ namespace WEV.WhiteRoom
 
         public void LoadWorldScene(int buildIndex)
         {
-            PlayerUIManager.instance.playerUILoadingScreenManager.ActivateLoadingScreenUsingData(currentLocation);
+            PlayerUIManager.instance.playerUILoadingScreenManager
+                .ActivateLoadingScreenUsingData(currentLocation);
 
             string worldScene = SceneUtility.GetScenePathByBuildIndex(buildIndex);
+            StartCoroutine(LoadWorldSceneCoroutine(worldScene));
+        }
 
-            SceneManager.LoadSceneAsync(worldScene, LoadSceneMode.Single);
+        private IEnumerator LoadWorldSceneCoroutine(string worldScene)
+        {
+            AsyncOperation op = SceneManager.LoadSceneAsync(worldScene, LoadSceneMode.Single);
+            while (!op.isDone)
+                yield return null;
 
-            // TO-DO: Implement Save System
-            //PlayerUIManager.instance.player.LoadGameDataToCurrentCharacterData(ref
-                //WRLD_SAVE_GAME_MANAGER.instance.currentCharacterData);
+            // Scene is fully loaded — now find the fresh player instance and apply data
+            PlayerManager playerInScene = FindAnyObjectByType<PlayerManager>();
+            if (playerInScene != null)
+            {
+                playerInScene.LoadGameDataToCurrentCharacterData(
+                    ref CoreSaveGameManager.instance.currentCharacterData);
+            }
         }
 
         public void LoadAdditiveScene(string sceneName)

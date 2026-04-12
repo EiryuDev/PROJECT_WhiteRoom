@@ -39,6 +39,8 @@ namespace WEV.WhiteRoom
         public CharacterSerializableDictionary<int, bool> coreItemsLooted; // This int is the item I.D, the bool is looted status
 
         [Header("INVENTORY Settings")]
+        public List<CharacterSerializableRegularItem> regularItemsInInventory;
+        public List<CharacterSerializableVitalItem> vitalItemsInInventory;
         public List<CharacterSerializableWeapon> weaponsInInventory;
 
         [Header("Doors Settings")]
@@ -47,6 +49,8 @@ namespace WEV.WhiteRoom
         public CharacterSaveData()
         { 
             coreItemsLooted = new CharacterSerializableDictionary<int, bool>();
+            regularItemsInInventory = new List<CharacterSerializableRegularItem>();
+            vitalItemsInInventory = new List<CharacterSerializableVitalItem>();
             weaponsInInventory = new List<CharacterSerializableWeapon>();
             doorsOpened = new List<string>();
         }

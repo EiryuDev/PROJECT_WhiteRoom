@@ -23,9 +23,6 @@ namespace WEV.WhiteRoom
         {
             UseButton();
 
-            // BELOW CODE: Save game after interacting
-            CoreSaveGameManager.instance.SaveGame();
-
             if (interactableObject == null)
                 return;
 

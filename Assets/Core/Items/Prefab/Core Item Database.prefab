@@ -49,5 +49,9 @@ MonoBehaviour:
   weapons:
   - {fileID: 11400000, guid: 6bc3e95772f3e3042ab4d5b45d1e7f68, type: 2}
   items: []
+  regularItems:
+  - {fileID: 11400000, guid: 7c6fd0ae8d147d144ae223efbc72f50a, type: 2}
+  - {fileID: 11400000, guid: 63510adc45920d6448bbdb1d2ee3c307, type: 2}
+  vitalItems: []
   keys:
   - {fileID: 11400000, guid: 7c6fd0ae8d147d144ae223efbc72f50a, type: 2}

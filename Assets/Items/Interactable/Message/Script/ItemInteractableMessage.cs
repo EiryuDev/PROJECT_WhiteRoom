@@ -11,8 +11,6 @@ namespace WEV.WhiteRoom
         {
             base.Interact(player);
 
-            CoreSaveGameManager.instance.SaveGame();
-
             PlayerUIManager.instance.playerUIPopUpManager.SendPlayerMessagePopUp(messagePopUp);
 
             // TO-DO: Optionally play sfx here

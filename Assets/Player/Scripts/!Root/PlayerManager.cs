@@ -80,6 +80,8 @@ namespace WEV.WhiteRoom
             currentCharacterData.speed = playerStatsManager.speed;
 
             // BELOW CODE: Clear list before save
+            currentCharacterData.regularItemsInInventory = new List<CharacterSerializableRegularItem>();
+            currentCharacterData.vitalItemsInInventory = new List<CharacterSerializableVitalItem>();
             currentCharacterData.weaponsInInventory = new List<CharacterSerializableWeapon>();
 
             for (int i = 0; i < playerInventoryManager.itemsInInventory.Count; i++)
@@ -87,8 +89,21 @@ namespace WEV.WhiteRoom
                 if (playerInventoryManager.itemsInInventory[i] == null)
                     continue;
 
+                ItemRegular regularItemInInventory = playerInventoryManager.itemsInInventory[i] as ItemRegular;
+                ItemVital vitalItemInInventory = playerInventoryManager.itemsInInventory[i] as ItemVital;
                 ItemWeapon weaponInInventory = playerInventoryManager.itemsInInventory[i] as ItemWeapon;
 
+                // Regular items
+                if (regularItemInInventory != null)
+                    currentCharacterData.regularItemsInInventory.Add(
+                        CoreSaveGameManager.instance.GetSerializableRegularItemFromItem(regularItemInInventory));
+
+                // Vital items
+                if (vitalItemInInventory != null)
+                    currentCharacterData.vitalItemsInInventory.Add(
+                        CoreSaveGameManager.instance.GetSerializableVitalItemFromItem(vitalItemInInventory));
+
+                // Weapons
                 if (weaponInInventory != null)
                     currentCharacterData.weaponsInInventory.Add(
                         CoreSaveGameManager.instance.GetSerializableWeaponFromWeaponItem(weaponInInventory));
@@ -98,11 +113,13 @@ namespace WEV.WhiteRoom
         public void LoadGameDataToCurrentCharacterData(ref CharacterSaveData currentCharacterData)
         {
             characterName = currentCharacterData.characterName;
-            Vector3 myPosition = new Vector3
-            (currentCharacterData.xPosition,
+
+            controller.enabled = false;
+            transform.position = new Vector3(
+                currentCharacterData.xPosition,
                 currentCharacterData.yPosition,
                 currentCharacterData.zPosition);
-            transform.position = myPosition;
+            controller.enabled = true;
 
             playerStatsManager.vitality = currentCharacterData.vitality;
             playerStatsManager.endurance = currentCharacterData.endurance;
@@ -110,7 +127,7 @@ namespace WEV.WhiteRoom
             playerStatsManager.intelligence = currentCharacterData.intelligence;
             playerStatsManager.willpower = currentCharacterData.willpower;
             playerStatsManager.agility = currentCharacterData.agility;
-            playerStatsManager.speed = currentCharacterData.speed;;
+            playerStatsManager.speed = currentCharacterData.speed; ;
 
             playerStatsManager.maxHealth =
                 playerStatsManager.CalculateHealthBasedOnVitalityLevel(playerStatsManager.vitality);
@@ -123,6 +140,21 @@ namespace WEV.WhiteRoom
             // TO-DO: Stats HUD UI
             //PlayerUIManager.instance.playerHUDManager.SetMaxStaminaValue(playerStatsManager.maxStamina);
 
+            // Regular Items
+            for (int i = 0; i < currentCharacterData.regularItemsInInventory.Count; i++)
+            {
+                ItemRegular itemRegular = currentCharacterData.regularItemsInInventory[i].GetRegularItem();
+                playerInventoryManager.AddItemToInventory(itemRegular);
+            }
+
+            // Vital Items
+            for (int i = 0; i < currentCharacterData.vitalItemsInInventory.Count; i++)
+            {
+                ItemVital itemVital = currentCharacterData.vitalItemsInInventory[i].GetVitalItem();
+                playerInventoryManager.AddItemToInventory(itemVital);
+            }
+
+            // Weapons
             for (int i = 0; i < currentCharacterData.weaponsInInventory.Count; i++)
             {
                 ItemWeapon weapon = currentCharacterData.weaponsInInventory[i].GetWeapon();

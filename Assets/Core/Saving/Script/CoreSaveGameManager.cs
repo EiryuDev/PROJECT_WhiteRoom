@@ -49,9 +49,6 @@ namespace WEV.WhiteRoom
             DontDestroyOnLoad(gameObject);
             LockFrameRateTo60();
             LoadAllCharacterProfiles();
-
-            // TO-DO: Remove this from here
-            player = PlayerUIManager.instance.player;
         }
 
         private void Update()
@@ -127,7 +124,7 @@ namespace WEV.WhiteRoom
                 }
             }
 
-            //UI_TitleScreenManager.Instance.DisplayNoFreeCharacterSlotsPopup();
+            UI_TitleScreenManager.Instance.DisplayNoFreeCharacterSlotsPopup();
         }
 
         private void NewGame()
@@ -194,6 +191,20 @@ namespace WEV.WhiteRoom
         }
 
         public int GetWorldSceneIndex() => worldSceneIndex;
+
+        public CharacterSerializableRegularItem GetSerializableRegularItemFromItem(ItemRegular itemRegular)
+        {
+            CharacterSerializableRegularItem serializedRegularItem = new CharacterSerializableRegularItem();
+            serializedRegularItem.itemID = itemRegular.itemID;
+            return serializedRegularItem;
+        }
+
+        public CharacterSerializableVitalItem GetSerializableVitalItemFromItem(ItemVital itemVital)
+        {
+            CharacterSerializableVitalItem serializedVitalItem = new CharacterSerializableVitalItem();
+            serializedVitalItem.itemID = itemVital.itemID;
+            return serializedVitalItem;
+        }
 
         public CharacterSerializableWeapon GetSerializableWeaponFromWeaponItem(ItemWeapon weapon)
         {

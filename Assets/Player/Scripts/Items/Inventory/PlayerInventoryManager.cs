@@ -92,8 +92,17 @@ namespace WEV.WhiteRoom
               // BELOW CODE: Non stackable item
               else
               {
-                  itemsInInventory.Remove(item);
-              }
+                for (int i = itemsInInventory.Count - 1; i >= 0; i--)
+                {
+                    if (itemsInInventory[i] == null) continue;
+
+                    if (itemsInInventory[i].itemID == item.itemID)
+                    {
+                        itemsInInventory.RemoveAt(i);
+                        break;
+                    }
+                }
+            }
   
               // BELOW CODE: Clean nulls
               for (int i = itemsInInventory.Count - 1; i >= 0; i--)
