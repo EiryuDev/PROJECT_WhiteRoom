@@ -31,6 +31,9 @@ namespace WEV.WhiteRoom
         public AudioClip elevatorDoorClosingSFX;
         public AudioClip elevatorMovingSFX;
         public AudioClip[] elevatorStoppingSFX;
+
+        [Header("Auto Closer Settings")]
+        public ItemInteractableElevatorCloser elevatorCloser;
         
         protected override void Awake()
         {
@@ -47,6 +50,42 @@ namespace WEV.WhiteRoom
             // BELOW CODE: Open the elevator door
             animator.Play(openElevatorDoorAnimation);
             audioSource.PlayOneShot(elevatorDoorOpeningSFX);
+        }
+
+        public void OpenElevatorDoor(CharacterManager character)
+        {
+            Debug.Log("TOP floor");
+
+            animator.Play(openElevatorDoorAnimation);
+            audioSource.PlayOneShot(elevatorDoorOpeningSFX);
+
+            character.characterLocomotionManager.canMove = true;
+            character.characterLocomotionManager.canJump = true;
+            character.characterLocomotionManager.canRotate = true;
+            character.characterLocomotionManager.canCrouch = true;
+            character.characterLocomotionManager.canSlide = true;
+
+            if(elevatorCloser != null)
+            {
+                elevatorCloser.interactableCollider.enabled = true;
+            }
+        }
+
+        public void CloseElevatorDoor(CharacterManager character)
+        {
+            Debug.Log("TOP floor");
+
+            interactableCollider.enabled = false;
+            PlayerUIManager.instance.player.playerInteractionManager.RemoveInteractionFromList(this);
+
+            animator.Play(closeElevatorDoorAnimation);
+            audioSource.PlayOneShot(elevatorDoorClosingSFX);
+
+            character.characterLocomotionManager.canMove = true;
+            character.characterLocomotionManager.canJump = true;
+            character.characterLocomotionManager.canRotate = true;
+            character.characterLocomotionManager.canCrouch = true;
+            character.characterLocomotionManager.canSlide = true;
         }
     }
 }

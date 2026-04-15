@@ -143,12 +143,12 @@ namespace WEV.WhiteRoom
             if (isRising)
             {
                 Debug.Log("Elevator reached HIGH destination");
-                OnReachedHigh(characterInLift);
+                elevator.OpenElevatorDoor(characterInLift);
             }
             else
             {
                 Debug.Log("Elevator reached LOW destination");
-                OnReachedLow(characterInLift);
+                elevator.OpenElevatorDoor(characterInLift);
             }
 
             // BELOW CODE: Re-enable the interaction with the elevator
@@ -194,34 +194,6 @@ namespace WEV.WhiteRoom
 
             elevator.charactersOnElevator.Remove(character);
             character.characterLocomotionManager.isRidingLift = false;
-        }
-
-        private void OnReachedHigh(CharacterManager character)
-        {
-            Debug.Log("TOP floor");
-
-            elevator.animator.Play(elevator.openElevatorDoorAnimation);
-            elevator.audioSource.PlayOneShot(elevator.elevatorDoorOpeningSFX);
-
-            character.characterLocomotionManager.canMove = true;
-            character.characterLocomotionManager.canJump = true;
-            character.characterLocomotionManager.canRotate = true;
-            character.characterLocomotionManager.canCrouch = true;
-            character.characterLocomotionManager.canSlide = true;
-        }
-
-        private void OnReachedLow(CharacterManager character)
-        {
-            Debug.Log("BOTTOM floor");
-
-            elevator.animator.Play(elevator.openElevatorDoorAnimation);
-            elevator.audioSource.PlayOneShot(elevator.elevatorDoorOpeningSFX);
-
-            character.characterLocomotionManager.canMove = true;
-            character.characterLocomotionManager.canJump = true;
-            character.characterLocomotionManager.canRotate = true;
-            character.characterLocomotionManager.canCrouch = true;
-            character.characterLocomotionManager.canSlide = true;
         }
     }
 }
