@@ -17,6 +17,7 @@ namespace WEV.WhiteRoom
         public bool isJumping = false;
         public bool isSliding = false;
         public bool isGrounded = true;
+        public bool isRidingLift = false;
 
         protected virtual void Awake()
         {

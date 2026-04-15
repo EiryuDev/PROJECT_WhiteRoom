@@ -1,6 +1,7 @@
 using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 
 namespace WEV.WhiteRoom
 {
@@ -57,6 +58,11 @@ namespace WEV.WhiteRoom
         {
             animator.SetBool("isGrounded", characterLocomotionManager.isGrounded);
             animator.SetBool("isMoving", characterLocomotionManager.isMoving);
+
+            if(characterLocomotionManager.isRidingLift)
+            {
+                //Vector3 newPosition = new Vector3(transform.position.x, transform.position.y, transform.position.z);
+            }
         }
 
         protected virtual void FixedUpdate()
