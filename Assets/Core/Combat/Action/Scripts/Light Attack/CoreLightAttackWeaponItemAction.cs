@@ -27,11 +27,11 @@ namespace WEV.WhiteRoom
             playerPerformingAction.playerCombatManager.isAttacking = true;
 
             // BELOW CODE: If player is sprinting, play running attack
-            if (playerPerformingAction.playerLocomotionManager.isSprinting)
-            {
-                PerformRunningAttack(playerPerformingAction, weaponPerformingAction);
-                return;
-            }
+            //if (playerPerformingAction.playerLocomotionManager.isSprinting)
+            //{
+            //    PerformRunningAttack(playerPerformingAction, weaponPerformingAction);
+            //    return;
+            //}
 
             PerformLightAttack(playerPerformingAction, weaponPerformingAction);
         }
