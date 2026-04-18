@@ -879,8 +879,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3323500443316398303}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalRotation: {x: 0, y: 1, z: 0, w: 0}
+  m_LocalPosition: {x: -0.16746998, y: 2, z: 6.74901}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -890,7 +890,7 @@ Transform:
   - {fileID: 7935581144041338085}
   - {fileID: 1864932994417663307}
   m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
 --- !u!95 &5737549669151969746
 Animator:
   serializedVersion: 7
@@ -934,7 +934,7 @@ CharacterController:
   m_Height: 2
   m_Radius: 0.5
   m_SlopeLimit: 45
-  m_StepOffset: 0.3
+  m_StepOffset: 0.2
   m_SkinWidth: 0.08
   m_MinMoveDistance: 0.001
   m_Center: {x: 0, y: 0, z: 0}
@@ -1154,10 +1154,10 @@ MonoBehaviour:
   isJumping: 0
   isSliding: 0
   isGrounded: 1
+  isRidingLift: 0
   player: {fileID: 0}
   verticalMovement: 0
   horizontalMovement: 0
-  groundCheck: {fileID: 7555406627948129337}
   velocity: {x: 0, y: 0, z: 0}
   isCrouching: 0
   originalHeight: 0
@@ -2223,7 +2223,7 @@ GameObject:
   - component: {fileID: 158203819957208753}
   - component: {fileID: 7124119756810717746}
   m_Layer: 0
-  m_Name: Ground Check
+  m_Name: Feet
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

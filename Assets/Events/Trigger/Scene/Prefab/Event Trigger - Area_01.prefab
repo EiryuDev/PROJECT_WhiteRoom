@@ -369,4 +369,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f351517eb2dd752498cf04f0886825a3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Lumimoth.ItemShop.EventTriggerLoadScene
-  area: {fileID: 11400000, guid: bc980deb4ba566644a367c583e47cc6b, type: 2}
+  area: {fileID: 0}

@@ -1,4 +1,3 @@
-
 using System;
 using UnityEngine;
 using System.Collections;
@@ -8,16 +7,18 @@ namespace WEV.WhiteRoom
     public class PlayerLocomotionManager : CharacterLocomotionManager
     {
         [HideInInspector] public PlayerManager player;
-        [HideInInspector] public float verticalMovement; 
-        [HideInInspector] public float horizontalMovement; 
+        [HideInInspector] public float verticalMovement;
+        [HideInInspector] public float horizontalMovement;
 
         [Header("MOVEMENT DATA")]
-        public Transform groundCheck;
         [HideInInspector] public Vector3 velocity;
         [HideInInspector] public bool isCrouching;
         [HideInInspector] public float originalHeight;
         private Vector3 originalCenter;
         private float targetHeight;
+
+        private Vector3 moveDirectionThisFrame = Vector3.zero;
+        private float moveSpeedThisFrame = 0f;
 
         [Header("Sliding Data")]
         [HideInInspector] public float slideTimer;
@@ -37,41 +38,41 @@ namespace WEV.WhiteRoom
 
         public void UseAllMovement()
         {
-            // BELOW CODE: Grounded movement
             UseSprint();
             UseCrouch();
-            UseGroundedMovement();
-            // BELOW CODE: Jumping movement
-            UseJumpingMovement();
+            UseGroundedMovement();  // Calculates direction only — no Move() call
+            UseJumpingMovement();   // Applies gravity + single combined Move() call
             UseSlidingMovement();
         }
+
         private void GetMovementValues()
         {
             verticalMovement = player.playerInputManager.verticalInput;
             horizontalMovement = player.playerInputManager.horizontalInput;
         }
+
         private void UseGroundedMovement()
         {
             if (!canMove || player.isPerformingAction || !isGrounded || isSliding)
-                return; // To stop the player from moving while interacting in the falling
+            {
+                moveDirectionThisFrame = Vector3.zero;
+                moveSpeedThisFrame = 0f;
+                return;
+            }
 
             GetMovementValues();
-            MovePlayer();
-        }
-        private void MovePlayer()
-        {
-            float baseSpeed =
+
+            moveSpeedThisFrame =
                 isSprinting ? player.playerInventoryManager.currentPlayerDataBeingUsed.sprintingSpeed :
                 player.playerInputManager.moveAmount > 0.5f ? player.playerInventoryManager.currentPlayerDataBeingUsed.movementSpeed :
                 player.playerInventoryManager.currentPlayerDataBeingUsed.walkingSpeed;
 
-            // If crouching, override speed
-            float speed = isCrouching ? player.playerInventoryManager.currentPlayerDataBeingUsed.crouchMovementSpeed : baseSpeed;
+            if (isCrouching)
+                moveSpeedThisFrame = player.playerInventoryManager.currentPlayerDataBeingUsed.crouchMovementSpeed;
 
-            Vector3 moveDirection = CalculateMoveDirection();
-
-            player.controller.Move(moveDirection * speed * Time.deltaTime);
+            moveDirectionThisFrame = CalculateMoveDirection();
         }
+
         public Vector3 CalculateMoveDirection()
         {
             Vector3 cameraForward = Camera.main.transform.forward;
@@ -83,24 +84,30 @@ namespace WEV.WhiteRoom
 
             return moveDirection;
         }
+
         public void AttemptToPerformJump()
         {
             if (canJump)
             {
-                
-                // Get the player's forward movement direction
                 Vector3 moveDirection = CalculateMoveDirection();
 
-                // Add the forward movement direction to the velocity
-                velocity = moveDirection * player.playerInventoryManager.currentPlayerDataBeingUsed.movementSpeed;
+                // BELOW CODE: If sprinting, carry full sprint momentum into the jump arc
+                if (isSprinting)
+                {
+                    velocity.x = moveDirection.x * player.playerInventoryManager.currentPlayerDataBeingUsed.sprintingSpeed;
+                    velocity.z = moveDirection.z * player.playerInventoryManager.currentPlayerDataBeingUsed.sprintingSpeed;
+                }
+                else
+                {
+                    velocity.x = moveDirection.x * player.playerInventoryManager.currentPlayerDataBeingUsed.movementSpeed;
+                    velocity.z = moveDirection.z * player.playerInventoryManager.currentPlayerDataBeingUsed.movementSpeed;
+                }
 
-                // Add the jump force to the Y velocity
                 velocity.y = Mathf.Sqrt(player.playerInventoryManager.currentPlayerDataBeingUsed.jumpForce * -2f * player.playerInventoryManager.currentPlayerDataBeingUsed.gravity);
-
-                // Start the jump cooldown
                 StartCoroutine(JumpCooldown());
             }
         }
+
         private IEnumerator JumpCooldown()
         {
             canJump = false;
@@ -110,7 +117,7 @@ namespace WEV.WhiteRoom
 
         public void UseJumpingMovement()
         {
-            isGrounded = Physics.CheckSphere(groundCheck.position, player.playerInventoryManager.currentPlayerDataBeingUsed.groundDistance, player.playerInventoryManager.currentPlayerDataBeingUsed.groundMask);
+            isGrounded = character.controller.isGrounded;
 
             if (isGrounded && velocity.y < 0)
             {
@@ -118,13 +125,26 @@ namespace WEV.WhiteRoom
             }
 
             velocity.y += player.playerInventoryManager.currentPlayerDataBeingUsed.gravity * Time.deltaTime;
-            character.controller.Move(velocity * Time.deltaTime);
 
-            // Reset the Y velocity and forward velocity after the movement is applied
+            Vector3 finalMove;
+
+            if (!isGrounded && (velocity.x != 0 || velocity.z != 0))
+            {
+                // BELOW CODE: Airborne with stored momentum — use velocity.x/z for horizontal
+                finalMove = new Vector3(velocity.x, velocity.y, velocity.z) * Time.deltaTime;
+            }
+            else
+            {
+                // BELOW CODE: Grounded — use normal directional movement
+                finalMove = moveDirectionThisFrame * moveSpeedThisFrame * Time.deltaTime;
+                finalMove.y = velocity.y * Time.deltaTime;
+            }
+
+            character.controller.Move(finalMove);
+
             if (character.controller.isGrounded)
             {
                 velocity.y = 0f;
-                // Reset the forward velocity
                 velocity.x = 0f;
                 velocity.z = 0f;
             }
@@ -134,21 +154,17 @@ namespace WEV.WhiteRoom
         {
             if (!canCrouch)
                 return;
-                
-            bool crouchHeld = player.playerInputManager.crouch_Input;
 
+            bool crouchHeld = player.playerInputManager.crouch_Input;
             isCrouching = crouchHeld;
 
             float crouchHeight = player.playerInventoryManager.currentPlayerDataBeingUsed.crouchHeight;
-
             targetHeight = isCrouching ? crouchHeight : originalHeight;
 
             float oldHeight = player.controller.height;
-
             float newHeight = Mathf.Lerp(oldHeight, targetHeight, Time.deltaTime);
             player.controller.height = newHeight;
 
-            // Keep feet grounded while resizing
             float heightDifference = newHeight - oldHeight;
             player.controller.center += new Vector3(0, heightDifference / 2f, 0);
         }
@@ -156,10 +172,7 @@ namespace WEV.WhiteRoom
         private void UseSprint()
         {
             bool wantsToSprint = player.playerInputManager.sprint_Input;
-
-            // Must be moving forward, grounded, not crouching, not sliding
             bool isMovingForward = player.playerInputManager.verticalInput > 0.5f;
-
             isSprinting = wantsToSprint && isMovingForward && isGrounded && !isCrouching && !isSliding;
         }
 
@@ -174,7 +187,6 @@ namespace WEV.WhiteRoom
 
             float slideHeight = player.playerInventoryManager.currentPlayerDataBeingUsed.slideHeight;
             player.controller.height = slideHeight;
-            // Shift center down so feet stay grounded when collider shrinks
             player.controller.center = new Vector3(originalCenter.x, originalCenter.y - (originalHeight - slideHeight) / 2f, originalCenter.z);
 
             slideTimer = player.playerInventoryManager.currentPlayerDataBeingUsed.slideDuration;
@@ -204,7 +216,7 @@ namespace WEV.WhiteRoom
         {
             isSliding = false;
             player.controller.height = originalHeight;
-            player.controller.center = originalCenter; // restore center so collider sits correctly on ground
+            player.controller.center = originalCenter;
         }
     }
 }

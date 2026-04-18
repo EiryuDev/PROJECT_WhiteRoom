@@ -2,7 +2,7 @@ using UnityEngine;
 
 namespace WEV.WhiteRoom
 {
-    public class EventTriggerSceneLoad : MonoBehaviour
+    public class EventTriggerLoadScene : MonoBehaviour
     {
         [Header("AREA")] 
         [SerializeField] private CoreSceneLocationSet area;

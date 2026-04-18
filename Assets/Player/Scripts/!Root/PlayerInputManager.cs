@@ -44,6 +44,7 @@ namespace WEV.WhiteRoom
                 // MOVEMENT
                 playerControls.PlayerMovement.Movement.performed +=
                     i => movementInput = i.ReadValue<Vector2>();
+                playerControls.PlayerMovement.Movement.canceled += i => movementInput = Vector2.zero;
 
                 // LOOK (MOUSE / CAMERA)
                 playerControls.PlayerCamera.Camera.performed += i =>
