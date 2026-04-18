@@ -5,15 +5,15 @@ using UnityEngine;
 
 namespace WEV.WhiteRoom
 {
-    public class CoreLocationManager : MonoBehaviour
+    public class CoreSceneLocationManager : MonoBehaviour
     {
-        public static CoreLocationManager instance; 
+        public static CoreSceneLocationManager instance; 
         
         [Header("LOCATION RENDERING")]
-        public List<CoreLocationRendererManager> worldLocationRenderers = new List<CoreLocationRendererManager>();
+        public List<CoreSceneLocationRendererManager> worldLocationRenderers = new List<CoreSceneLocationRendererManager>();
         
         [Header("PLAYERS IN LOCATIONS")]
-        private Dictionary<CoreLocationSceneSet, List<PlayerManager>> playersInLocation = new Dictionary<CoreLocationSceneSet, List<PlayerManager>>();
+        private Dictionary<CoreSceneLocationSet, List<PlayerManager>> playersInLocation = new Dictionary<CoreSceneLocationSet, List<PlayerManager>>();
 
         [Header("PROBE VOLUME SET")] 
         [SerializeField] private ProbeVolumeBakingSet bakeSet;
@@ -36,10 +36,10 @@ namespace WEV.WhiteRoom
             // BELOW CODE: The world scene is never unloaded
             doNotUnloadLocations.Add(CoreSceneManager.instance.world);
 
-            List<CoreLocationSceneSet> areasWithPlayersActive = new List<CoreLocationSceneSet>();
+            List<CoreSceneLocationSet> areasWithPlayersActive = new List<CoreSceneLocationSet>();
 
             // BELOW CODE: Search each world scene with active entries
-            foreach (KeyValuePair<CoreLocationSceneSet, List<PlayerManager>> pair in playersInLocation)
+            foreach (KeyValuePair<CoreSceneLocationSet, List<PlayerManager>> pair in playersInLocation)
             {
                 // BELOW CODE: Clean up null/empty
                 for (int i = 0; i < pair.Value.Count; i++)
@@ -66,7 +66,7 @@ namespace WEV.WhiteRoom
 
             return doNotUnloadLocations;
         }
-        public void LoadAreasBasedOnAreaCurrentlyIn(CoreLocationSceneSet areaCurrentlyIn, PlayerManager player)
+        public void LoadAreasBasedOnAreaCurrentlyIn(CoreSceneLocationSet areaCurrentlyIn, PlayerManager player)
         {
             // BELOW CODE: 1. Is the player currently already in the area? If so, abort so we do not reload
             if (IsPlayerAlreadyInArea(areaCurrentlyIn, player))
@@ -85,7 +85,7 @@ namespace WEV.WhiteRoom
             CoreSceneManager.instance.CheckForUnrequiredScenes();
             CoreSceneManager.instance.CheckForRequiredRenderers();
         }
-        private bool IsPlayerAlreadyInArea(CoreLocationSceneSet area, PlayerManager player)
+        private bool IsPlayerAlreadyInArea(CoreSceneLocationSet area, PlayerManager player)
         {
             bool playerInArea = false;
 
@@ -99,7 +99,7 @@ namespace WEV.WhiteRoom
             if (player == null)
                 return;
 
-            foreach (KeyValuePair<CoreLocationSceneSet, List<PlayerManager>> pair in playersInLocation)
+            foreach (KeyValuePair<CoreSceneLocationSet, List<PlayerManager>> pair in playersInLocation)
             {
                 if (pair.Value.Contains(player))
                     pair.Value.Remove(player);
@@ -112,7 +112,7 @@ namespace WEV.WhiteRoom
                 }
             }
         }
-        private void AddPlayerToNewLocation(CoreLocationSceneSet area, PlayerManager player)
+        private void AddPlayerToNewLocation(CoreSceneLocationSet area, PlayerManager player)
         {
             if (player == null)
                 return;
@@ -128,7 +128,7 @@ namespace WEV.WhiteRoom
             
             player.areaCurrentlyIn = area;
             
-            foreach (KeyValuePair<CoreLocationSceneSet, List<PlayerManager>> pair in playersInLocation)
+            foreach (KeyValuePair<CoreSceneLocationSet, List<PlayerManager>> pair in playersInLocation)
             {
                 // BELOW CODE: Clean up null/empty
                 for (int i = 0; i < pair.Value.Count; i++)
@@ -138,11 +138,11 @@ namespace WEV.WhiteRoom
                 }
             }
         }
-        private void LoadAdditiveScenesAroundCurrentArea(CoreLocationSceneSet area)
+        private void LoadAdditiveScenesAroundCurrentArea(CoreSceneLocationSet area)
         {
             List<string> scenesToLoad = new List<string>();
             
-            List<CoreLocationSceneSet> worldLocations = new List<CoreLocationSceneSet>();
+            List<CoreSceneLocationSet> worldLocations = new List<CoreSceneLocationSet>();
 
             scenesToLoad = area.GetRequiredSceneIDsForWorldLocation();
             
@@ -176,7 +176,7 @@ namespace WEV.WhiteRoom
         }
         
         // Scene rendering
-        public void AddLocationRenderManagerToList(CoreLocationRendererManager worldLocationRendererManager)
+        public void AddLocationRenderManagerToList(CoreSceneLocationRendererManager worldLocationRendererManager)
         {
             // Check for nulls as the scenes will always be loaded/unloaded
             for (int i = 0; i < worldLocationRenderers.Count; i++)
@@ -192,8 +192,8 @@ namespace WEV.WhiteRoom
         // Toggle game mode (disables all root objects and renderers so they can be enabled as needed during gameplay)
         public void ToggleGameMode()
         {
-            CoreLocationRendererManager[] rendererManagers =
-                FindObjectsByType<CoreLocationRendererManager>();
+            CoreSceneLocationRendererManager[] rendererManagers =
+                FindObjectsByType<CoreSceneLocationRendererManager>();
 
             for (int i = 0; i < rendererManagers.Length; i++)
             {
@@ -210,8 +210,8 @@ namespace WEV.WhiteRoom
         // Toggle light bake mode (enables all root objects and renderers so you can world build/bake lighting)
         public void ToggleLightBakeMode()
         {
-            CoreLocationRendererManager[] rendererManagers =
-                FindObjectsByType<CoreLocationRendererManager>();
+            CoreSceneLocationRendererManager[] rendererManagers =
+                FindObjectsByType<CoreSceneLocationRendererManager>();
 
             for (int i = 0; i < rendererManagers.Length; i++)
             {

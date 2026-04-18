@@ -2,7 +2,7 @@ using UnityEngine;
 
 namespace WEV.WhiteRoom
 {
-    public class AICharacterDamageHitbox : CoreDamageHitbox
+    public class AICharacterDamageHitbox : CoreHitboxDamage
     {
         [SerializeField] AICharacterManager aiCharacter; // Reference to the AI Character Manager script
         protected override void Awake()

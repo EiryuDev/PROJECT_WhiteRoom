@@ -39,7 +39,7 @@ namespace WEV.WhiteRoom
             canvasGroup.alpha = 1;
             loadingScreen.SetActive(true);
         }
-        public void ActivateLoadingScreenUsingData(CoreLocationData locationData)
+        public void ActivateLoadingScreenUsingData(CoreSceneLocationData locationData)
         {
             // BELOW CODE: If loading screen is already active, then return
             if(loadingScreen.activeSelf)

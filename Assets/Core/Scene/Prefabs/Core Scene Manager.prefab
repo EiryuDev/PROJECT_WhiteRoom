@@ -49,4 +49,4 @@ MonoBehaviour:
   quedScenesToLoad: 0
   sceneIsLoading: 0
   world: Player_01
-  currentLocation: {fileID: 11400000, guid: 56850ba9ae4538f4696d8d0faec1b1a1, type: 2}
+  currentLocation: {fileID: 11400000, guid: 286e06569a984c540a866740661d10ff, type: 2}

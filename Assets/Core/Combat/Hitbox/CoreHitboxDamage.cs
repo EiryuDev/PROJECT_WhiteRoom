@@ -4,7 +4,7 @@ using UnityEngine.SceneManagement;
 
 namespace WEV.WhiteRoom
 {
-    public class CoreDamageHitbox : MonoBehaviour
+    public class CoreHitboxDamage : MonoBehaviour
     {
         [Header("HITBOX")]
         [SerializeField] protected Collider damageHitbox; // Reference to the Collider component for the hitbox

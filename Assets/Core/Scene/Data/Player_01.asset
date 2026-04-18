@@ -9,9 +9,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 092662420a9eee0418e4453114a9830f, type: 3}
+  m_Script: {fileID: 11500000, guid: 9922d213f8a8dbe498b7e67a2a9f4524, type: 3}
   m_Name: Player_01
-  m_EditorClassIdentifier: Assembly-CSharp::WEV.WhiteRoom.WorldLocationData
+  m_EditorClassIdentifier: Assembly-CSharp::WEV.WhiteRoom.CoreSceneLocationData
   locationName: Player_01
   locationImages:
   - {fileID: 21300000, guid: 0e67beec1e8c81649a3237437e74cd70, type: 3}

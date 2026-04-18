@@ -3,7 +3,7 @@ using UnityEngine;
 namespace WEV.WhiteRoom
 {
     [CreateAssetMenu(menuName = "White Room/Character Actions/Weapon Actions/Off Hand Melee Action")]
-    public class CoreOffHandWeaponItemAction : CoreWeaponItemAction
+    public class CoreCombatActionOffHand : CoreCombatActionWeaponItem
     {
         public override void AttemptToPerformAction(PlayerManager playerPerformingAction,
             ItemWeapon weaponPerformingAction)

@@ -5,7 +5,7 @@ using System.Collections.Generic;
 namespace WEV.WhiteRoom
 {
     [CreateAssetMenu(menuName = "White Room/Character Actions/Weapon Actions/Test Action")]
-    public class CoreWeaponItemAction : ScriptableObject
+    public class CoreCombatActionWeaponItem : ScriptableObject
     {
         [Tooltip("ID number for the particular action.")]
         public int actionID; // ID number for the particular action

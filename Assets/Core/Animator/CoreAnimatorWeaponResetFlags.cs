@@ -2,7 +2,7 @@ using UnityEngine;
 
 namespace WEV.WhiteRoom
 {
-    public class CoreWeaponAnimatorResetFlags : StateMachineBehaviour
+    public class CoreAnimatorWeaponResetFlags : StateMachineBehaviour
     {
         CharacterManager character; // Reference to the Character Manager Script
 

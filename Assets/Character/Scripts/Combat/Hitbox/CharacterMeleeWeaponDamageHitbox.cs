@@ -2,7 +2,7 @@ using UnityEngine;
 
 namespace WEV.WhiteRoom
 {
-    public class CharacterMeleeWeaponDamageHitbox : CoreDamageHitbox
+    public class CharacterMeleeWeaponDamageHitbox : CoreHitboxDamage
     {
         [Header("ATTACKING CHARACTER")]
         public CharacterManager characterCausingDamage; // When calculating damage this is used to check for attacker damage modifiers

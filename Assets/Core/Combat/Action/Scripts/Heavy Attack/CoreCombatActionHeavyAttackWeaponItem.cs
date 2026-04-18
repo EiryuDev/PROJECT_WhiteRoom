@@ -3,7 +3,7 @@ using UnityEngine;
 namespace WEV.WhiteRoom
 {
     [CreateAssetMenu(menuName = "White Room/Character Actions/Weapon Actions/Heavy Attack Action")]
-    public class CoreHeavyAttackWeaponItemAction : CoreWeaponItemAction
+    public class CoreCombatActionHeavyAttackWeaponItem : CoreCombatActionWeaponItem
     {
         [SerializeField] string heavy_Attack_01 = "Main_Heavy_Attack_01"; 
         [SerializeField] string heavy_Attack_02 = "Main_Heavy_Attack_02";  

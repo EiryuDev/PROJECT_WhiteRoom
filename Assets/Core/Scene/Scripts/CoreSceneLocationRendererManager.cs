@@ -5,7 +5,7 @@ using UnityEngine;
 
 namespace WEV.WhiteRoom
 {
-    public class CoreLocationRendererManager : MonoBehaviour
+    public class CoreSceneLocationRendererManager : MonoBehaviour
     {
         [Header("Scene I.D")]
         [HideInInspector] public int renderSceneID;
@@ -21,7 +21,7 @@ namespace WEV.WhiteRoom
         {
             // BELOW CODE: Gets the scene id of the scene this gameObject is placed in
             renderSceneID = gameObject.scene.buildIndex;
-            CoreLocationManager.instance.AddLocationRenderManagerToList(this);
+            CoreSceneLocationManager.instance.AddLocationRenderManagerToList(this);
         }
 
         private void Start()

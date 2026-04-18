@@ -5,7 +5,7 @@ using System.Collections.Generic;
 namespace WEV.WhiteRoom
 {
     [CreateAssetMenu(menuName = "White Room/Scene/World Locations")]
-    public class CoreLocationSceneSet : ScriptableObject
+    public class CoreSceneLocationSet : ScriptableObject
     {
         // The scenes that this location will require to be loaded, we use a list of individual scenes
         // to make loading/unloading perform without a stutter
@@ -15,7 +15,7 @@ namespace WEV.WhiteRoom
         // Other locations that need to be loaded in when this location has been loaded
         // (anywhere you can see from this location)
         [Header("Other Required Locations")] 
-        [SerializeField] CoreLocationSceneSet[] requiredLocations;
+        [SerializeField] CoreSceneLocationSet[] requiredLocations;
 
         // Optional add ons (try it for fun)
         // 1. Send a pop up message when entering a new area

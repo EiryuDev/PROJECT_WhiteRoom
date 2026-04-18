@@ -92,11 +92,11 @@ namespace WEV.WhiteRoom
         // Item based actions (RB, RT, LB, LT)
         [Header("ACTIONS")]
         [Tooltip("Weapon action for one hand weapon (right bumper / Left Mouse Click)")]
-        public CoreWeaponItemAction oh_RB_Action;
+        public CoreCombatActionWeaponItem oh_RB_Action;
         [Tooltip("Weapon action for one hand weapon (right trigger / Right Mouse Click)")]
-        public CoreWeaponItemAction oh_RT_Action;
+        public CoreCombatActionWeaponItem oh_RT_Action;
         [Tooltip("Weapon action for one hand weapon (left bumper / G Key)")]
-        public CoreWeaponItemAction oh_LB_Action;
+        public CoreCombatActionWeaponItem oh_LB_Action;
 
         // Blocking sounds
         [Header("WEAPON SFX")]

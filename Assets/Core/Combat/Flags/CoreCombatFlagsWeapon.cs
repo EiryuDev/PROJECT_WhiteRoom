@@ -2,7 +2,7 @@ using UnityEngine;
 
 namespace WEV.WhiteRoom
 {
-    public class CoreCombatWeaponFlags : MonoBehaviour
+    public class CoreCombatFlagsWeapon : MonoBehaviour
     {
         // Damage Hitboxes
         public void OpenDamageHitbox()

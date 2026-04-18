@@ -32,7 +32,7 @@ namespace WEV.WhiteRoom
 
         [Header("SCENE I.Ds")] 
         public string world = "World_01";
-        public CoreLocationData currentLocation;
+        public CoreSceneLocationData currentLocation;
 
         public bool IsLoadingComplete => quedScenesToLoad <= 0 && !sceneIsLoading && !sceneIsUnloading;
 
@@ -290,7 +290,7 @@ namespace WEV.WhiteRoom
                 scenesToUnload.Add(loadedScenes[i].name);
             }
 
-            doNotUnloadList = CoreLocationManager.instance.GenerateDoNotUnloadListBasedOnPlayerLocations();
+            doNotUnloadList = CoreSceneLocationManager.instance.GenerateDoNotUnloadListBasedOnPlayerLocations();
 
             for (int i = scenesToUnload.Count - 1; i >= 0; i--)
             {
@@ -303,20 +303,20 @@ namespace WEV.WhiteRoom
 
         public void CheckForRequiredRenderers()
         {
-            if (CoreLocationManager.instance == null)
+            if (CoreSceneLocationManager.instance == null)
                 return;
 
             if (requiredRenderersCoroutine != null)
                 StopCoroutine(requiredRenderersCoroutine);
 
-            CoreLocationSceneSet location = PlayerUIManager.instance.player.areaCurrentlyIn;
+            CoreSceneLocationSet location = PlayerUIManager.instance.player.areaCurrentlyIn;
 
             if (location != null)
                 requiredRenderersCoroutine = StartCoroutine(
                     CheckForRequiredSceneRenderersCoroutine(location));
         }
 
-        private IEnumerator CheckForRequiredSceneRenderersCoroutine(CoreLocationSceneSet location)
+        private IEnumerator CheckForRequiredSceneRenderersCoroutine(CoreSceneLocationSet location)
         {
             while (sceneIsLoading)
                 yield return null;
@@ -335,20 +335,20 @@ namespace WEV.WhiteRoom
                 }
             }
 
-            for (int i = 0; i < CoreLocationManager.instance.worldLocationRenderers.Count; i++)
+            for (int i = 0; i < CoreSceneLocationManager.instance.worldLocationRenderers.Count; i++)
             {
-                if (CoreLocationManager.instance.worldLocationRenderers[i] == null)
+                if (CoreSceneLocationManager.instance.worldLocationRenderers[i] == null)
                     continue;
 
                 if (sceneBuildIndexes.Contains(
-                        CoreLocationManager.instance.worldLocationRenderers[i].renderSceneID))
+                        CoreSceneLocationManager.instance.worldLocationRenderers[i].renderSceneID))
                 {
-                    CoreLocationManager.instance.worldLocationRenderers[i]
+                    CoreSceneLocationManager.instance.worldLocationRenderers[i]
                         .ToggleAllMeshRenderersOverTime(true);
                 }
                 else
                 {
-                    CoreLocationManager.instance.worldLocationRenderers[i]
+                    CoreSceneLocationManager.instance.worldLocationRenderers[i]
                         .ToggleAllMeshRenderersOverTime(false);
                 }
             }

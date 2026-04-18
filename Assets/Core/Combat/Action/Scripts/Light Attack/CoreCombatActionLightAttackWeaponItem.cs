@@ -3,7 +3,7 @@ using UnityEngine;
 namespace WEV.WhiteRoom
 {
     [CreateAssetMenu(menuName = "White Room/Character Actions/Weapon Actions/Light Attack Action")]
-    public class CoreLightAttackWeaponItemAction : CoreWeaponItemAction
+    public class CoreCombatActionLightAttackWeaponItem : CoreCombatActionWeaponItem
     {
         [Header("LIGHT ATTACKS")]
         [SerializeField] string light_Attack_01 = "Main_Light_Attack_01"; 
