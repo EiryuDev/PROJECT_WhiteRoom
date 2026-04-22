@@ -53,7 +53,7 @@ namespace WEV.WhiteRoom
 
         private void UseGroundedMovement()
         {
-            if (!canMove || player.isPerformingAction || !isGrounded || isSliding)
+            if (!canMove || !isGrounded || isSliding)
             {
                 moveDirectionThisFrame = Vector3.zero;
                 moveSpeedThisFrame = 0f;
