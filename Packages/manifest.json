@@ -1,5 +1,6 @@
 {
   "dependencies": {
+    "com.cyanilux.shadergraph-customlighting": "https://github.com/Cyanilux/URP_ShaderGraphCustomLighting.git",
     "com.unity.ai.navigation": "2.0.12",
     "com.unity.cloud.gltfast": "6.18.0",
     "com.unity.collab-proxy": "2.11.4",

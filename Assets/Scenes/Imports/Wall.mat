@@ -25,14 +25,16 @@ Material:
   m_Parent: {fileID: 0}
   m_ModifiedSerializedProperties: 0
   m_ValidKeywords:
+  - _EMISSION
   - _LIGHTINGTYPE_TEXEL
   - _TEXTUREFILTERING_NEAREST
   m_InvalidKeywords:
   - _DITHERAMBIENT_ON
   - _DITHERDIFFUSE_ON
-  - _DITHERSPEC_ON
+  - _DOUBLESIZEDITHER_ON
   - _ENABLEMASKMAP_ON
-  - _REFLECTIONS_ON
+  - _ENABLE_MASKMAP
+  - _HALFLAMBERT_ON
   - _SPECULARTYPE_COOKTORRANCE
   m_LightmapFlags: 4
   m_EnableInstancingVariants: 0
@@ -46,11 +48,11 @@ Material:
     serializedVersion: 3
     m_TexEnvs:
     - _BaseMap:
-        m_Texture: {fileID: 2800000, guid: 19f7a5e5b466ed0459cc238f0a202f9f, type: 3}
+        m_Texture: {fileID: 2800000, guid: 3ff3f36914a293e4aa365e2c24c89d09, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _BumpMap:
-        m_Texture: {fileID: 0}
+        m_Texture: {fileID: 2800000, guid: c3fa6203b93ab7b4e8ca1000ad3f5dfc, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _ClearCoatMap:
@@ -78,7 +80,7 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MaskMap:
-        m_Texture: {fileID: 0}
+        m_Texture: {fileID: 2800000, guid: e92f989d316f31a42ab8a1dfeb034e14, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MetallicGlossMap:
@@ -147,18 +149,18 @@ Material:
     - _DetailNormalMapScale: 1
     - _DitherAmbient: 1
     - _DitherDiffuse: 1
-    - _DitherSpec: 1
-    - _DoubleSizeDither: 0
+    - _DitherSpec: 0
+    - _DoubleSizeDither: 1
     - _DstBlend: 0
     - _DstBlendAlpha: 0
-    - _Emission: 0
+    - _Emission: 1
     - _EnableMaskMap: 1
     - _EnvironmentReflections: 1
     - _Extras: 0
     - _GlossMapScale: 0
     - _Glossiness: 0
     - _GlossyReflections: 0
-    - _HalfLambert: 0
+    - _HalfLambert: 1
     - _Lighting: 0
     - _LightingType: 2
     - _LightmapEmissionStr: 1
@@ -171,7 +173,7 @@ Material:
     - _Parallax: 0.005
     - _QueueOffset: 0
     - _ReceiveShadows: 1
-    - _Reflections: 1
+    - _Reflections: 0
     - _Smoothness: 0.5
     - _SmoothnessTextureChannel: 0
     - _SpecularHighlights: 1
@@ -197,7 +199,7 @@ Material:
     - _BaseColor: {r: 1, g: 1, b: 1, a: 1}
     - _Color: {r: 1, g: 1, b: 1, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 0}
-    - _SmoothRemap: {r: 0, g: 1, b: 0, a: 0}
+    - _SmoothRemap: {r: 0, g: 0.2, b: 0, a: 0}
     - _SmoothRemapVCol: {r: 0, g: 1, b: 0, a: 0}
     - _SpecColor: {r: 0.19999996, g: 0.19999996, b: 0.19999996, a: 1}
     - _TilingOffset: {r: 1, g: 1, b: 0, a: 0}

@@ -82,7 +82,7 @@ Shader "Andicraft/Retro Master (NOT Transparent)"
    }
    SubShader
    {
-      Tags { "RenderPipeline"="UniversalPipeline" "RenderType" = "Opaque" "UniversalMaterialType" = "Unlit" "Queue" = "Geometry" }
+      Tags { "RenderPipeline"="UniversalPipeline" "RenderType" = "Opaque" "UniversalMaterialType" = "lit" "Queue" = "Geometry" }
 
       
 

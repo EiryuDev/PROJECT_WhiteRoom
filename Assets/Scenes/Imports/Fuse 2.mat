@@ -25,16 +25,18 @@ Material:
   m_Parent: {fileID: 0}
   m_ModifiedSerializedProperties: 0
   m_ValidKeywords:
+  - _EMISSION
   - _LIGHTINGTYPE_TEXEL
   - _TEXTUREFILTERING_NEAREST
   m_InvalidKeywords:
   - _DITHERAMBIENT_ON
   - _DITHERDIFFUSE_ON
-  - _DITHERSPEC_ON
+  - _DOUBLESIZEDITHER_ON
   - _ENABLEMASKMAP_ON
+  - _ENABLE_MASKMAP
+  - _HALFLAMBERT_ON
   - _METALLICSPECGLOSSMAP
   - _NORMALMAP
-  - _REFLECTIONS_ON
   - _SPECULARHIGHLIGHTS_OFF
   - _SPECULARTYPE_COOKTORRANCE
   m_LightmapFlags: 4
@@ -150,18 +152,18 @@ Material:
     - _DetailNormalMapScale: 1
     - _DitherAmbient: 1
     - _DitherDiffuse: 1
-    - _DitherSpec: 1
-    - _DoubleSizeDither: 0
+    - _DitherSpec: 0
+    - _DoubleSizeDither: 1
     - _DstBlend: 0
     - _DstBlendAlpha: 0
-    - _Emission: 0
+    - _Emission: 1
     - _EnableMaskMap: 1
     - _EnvironmentReflections: 1
     - _Extras: 0
     - _GlossMapScale: 0
     - _Glossiness: 0
     - _GlossyReflections: 0
-    - _HalfLambert: 0
+    - _HalfLambert: 1
     - _Lighting: 0
     - _LightingType: 2
     - _LightmapEmissionStr: 1
@@ -175,7 +177,7 @@ Material:
     - _Parallax: 0.005
     - _QueueOffset: 0
     - _ReceiveShadows: 1
-    - _Reflections: 1
+    - _Reflections: 0
     - _Smoothness: 0
     - _SmoothnessTextureChannel: 0
     - _SpecularHighlights: 0
