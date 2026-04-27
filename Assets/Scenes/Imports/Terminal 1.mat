@@ -31,7 +31,6 @@ Material:
   m_InvalidKeywords:
   - _DITHERAMBIENT_ON
   - _DITHERDIFFUSE_ON
-  - _DOUBLESIZEDITHER_ON
   - _ENABLEMASKMAP_ON
   - _ENABLE_MASKMAP
   - _HALFLAMBERT_ON
@@ -146,7 +145,7 @@ Material:
     - _DitherAmbient: 1
     - _DitherDiffuse: 1
     - _DitherSpec: 0
-    - _DoubleSizeDither: 1
+    - _DoubleSizeDither: 0
     - _DstBlend: 0
     - _DstBlendAlpha: 0
     - _Emission: 1

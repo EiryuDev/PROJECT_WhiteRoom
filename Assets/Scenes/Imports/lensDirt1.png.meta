@@ -1,12 +1,5 @@
 fileFormatVersion: 2
-guid: 98d442ec7306cb24e82a0e572e2827a2
-AssetOrigin:
-  serializedVersion: 1
-  productId: 162876
-  packageName: Sci Fi Doors
-  packageVersion: 1.1.1
-  assetPath: Assets/MASH Virtual/Sci Fi Doors/Texture/Doors_Doors_MetallicSmoothness.png
-  uploadId: 570517
+guid: 72e5efeb3af3e8b44a693cfa86b33217
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -70,9 +63,9 @@ TextureImporter:
   compressionQualitySet: 0
   textureFormatSet: 0
   ignorePngGamma: 0
-  applyGammaDecoding: 1
+  applyGammaDecoding: 0
   swizzle: 50462976
-  cookieLightType: 1
+  cookieLightType: 0
   platformSettings:
   - serializedVersion: 4
     buildTarget: DefaultTexturePlatform

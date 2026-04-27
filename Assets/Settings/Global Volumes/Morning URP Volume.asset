@@ -15,13 +15,13 @@ MonoBehaviour:
   active: 1
   shadows:
     m_OverrideState: 1
-    m_Value: {x: 1, y: 0.83876354, z: 0.68737876, w: 0.14354058}
+    m_Value: {x: 1, y: 0.997618, z: 0.74860466, w: 0.010343863}
   midtones:
     m_OverrideState: 1
-    m_Value: {x: 1, y: 0.71196496, z: 0.42878675, w: 0.071770325}
+    m_Value: {x: 1, y: 0.62576807, z: 0.30774385, w: 0.14349163}
   highlights:
     m_OverrideState: 1
-    m_Value: {x: 1, y: 1, z: 1, w: 0}
+    m_Value: {x: 1, y: 0.6165155, z: 0.42529976, w: 0.1434428}
   shadowsStart:
     m_OverrideState: 1
     m_Value: 0
@@ -203,22 +203,25 @@ MonoBehaviour:
     m_Value: 1
   threshold:
     m_OverrideState: 1
-    m_Value: 0.9
+    m_Value: 0.55
   intensity:
     m_OverrideState: 1
-    m_Value: 0.21
+    m_Value: 3.51
   scatter:
     m_OverrideState: 1
-    m_Value: 0.7
+    m_Value: 0.71
   clamp:
     m_OverrideState: 1
-    m_Value: 65472
+    m_Value: 200
   tint:
     m_OverrideState: 1
     m_Value: {r: 1, g: 1, b: 1, a: 1}
   highQualityFiltering:
     m_OverrideState: 1
     m_Value: 1
+  filter:
+    m_OverrideState: 1
+    m_Value: 0
   downscale:
     m_OverrideState: 0
     m_Value: 0
@@ -227,11 +230,11 @@ MonoBehaviour:
     m_Value: 6
   dirtTexture:
     m_OverrideState: 1
-    m_Value: {fileID: 0}
+    m_Value: {fileID: 2800000, guid: 72e5efeb3af3e8b44a693cfa86b33217, type: 3}
     dimension: 1
   dirtIntensity:
     m_OverrideState: 1
-    m_Value: 0
+    m_Value: 12.1
 --- !u!114 &-7040558264941034197
 MonoBehaviour:
   m_ObjectHideFlags: 3
@@ -719,19 +722,19 @@ MonoBehaviour:
   active: 1
   postExposure:
     m_OverrideState: 1
-    m_Value: 0.36
+    m_Value: -0.5
   contrast:
     m_OverrideState: 1
-    m_Value: 9
+    m_Value: 30.5
   colorFilter:
     m_OverrideState: 1
-    m_Value: {r: 1, g: 1, b: 1, a: 1}
+    m_Value: {r: 0.8726415, g: 1, b: 0.90961653, a: 1}
   hueShift:
     m_OverrideState: 1
-    m_Value: 0
+    m_Value: -0
   saturation:
     m_OverrideState: 1
-    m_Value: 0
+    m_Value: -27
 --- !u!114 &-3408837598661955661
 MonoBehaviour:
   m_ObjectHideFlags: 3
@@ -747,7 +750,7 @@ MonoBehaviour:
   active: 1
   intensity:
     m_OverrideState: 1
-    m_Value: 0.047
+    m_Value: 0.254
 --- !u!114 &-3119051767829480766
 MonoBehaviour:
   m_ObjectHideFlags: 3
@@ -788,16 +791,16 @@ MonoBehaviour:
   active: 1
   color:
     m_OverrideState: 1
-    m_Value: {r: 0, g: 0, b: 0, a: 1}
+    m_Value: {r: 0.1491841, g: 0.254717, b: 0.14538093, a: 1}
   center:
     m_OverrideState: 1
     m_Value: {x: 0.5, y: 0.5}
   intensity:
     m_OverrideState: 1
-    m_Value: 0.414
+    m_Value: 0.507
   smoothness:
     m_OverrideState: 1
-    m_Value: 0.2
+    m_Value: 0.3
   rounded:
     m_OverrideState: 1
     m_Value: 0
@@ -931,6 +934,7 @@ MonoBehaviour:
   - {fileID: -2229788164321871156}
   - {fileID: -9216424105785221273}
   - {fileID: 1601098790854106321}
+  - {fileID: 6821747688179299386}
 --- !u!114 &432601958633967235
 MonoBehaviour:
   m_ObjectHideFlags: 3
@@ -1010,8 +1014,8 @@ MonoBehaviour:
           inWeight: 0
           outWeight: 0
         - serializedVersion: 3
-          time: 0.54180604
-          value: 0.46762592
+          time: 0.28869048
+          value: 0.17538464
           inSlope: 1
           outSlope: 1
           tangentMode: 0
@@ -1019,10 +1023,10 @@ MonoBehaviour:
           inWeight: 0
           outWeight: 0
         - serializedVersion: 3
-          time: 0.8160535
-          value: 0.7410072
-          inSlope: 1.2287358
-          outSlope: 1.2287358
+          time: 0.7485119
+          value: 0.8769231
+          inSlope: 0.9398602
+          outSlope: 0.9398602
           tangentMode: 0
           weightedMode: 0
           inWeight: 0
@@ -1384,6 +1388,31 @@ MonoBehaviour:
   m_DenoiserRadius:
     m_OverrideState: 1
     m_Value: 0.65
+--- !u!114 &6821747688179299386
+MonoBehaviour:
+  m_ObjectHideFlags: 3
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 29fa0085f50d5e54f8144f766051a691, type: 3}
+  m_Name: FilmGrain
+  m_EditorClassIdentifier: Unity.RenderPipelines.Universal.Runtime::UnityEngine.Rendering.Universal.FilmGrain
+  active: 1
+  type:
+    m_OverrideState: 1
+    m_Value: 1
+  intensity:
+    m_OverrideState: 1
+    m_Value: 0.275
+  response:
+    m_OverrideState: 1
+    m_Value: 0.8
+  texture:
+    m_OverrideState: 0
+    m_Value: {fileID: 0}
 --- !u!114 &7922941726509772328
 MonoBehaviour:
   m_ObjectHideFlags: 3
