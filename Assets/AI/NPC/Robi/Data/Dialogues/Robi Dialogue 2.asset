@@ -15,7 +15,7 @@ MonoBehaviour:
   requiredStageID: 10
   dialogueWaitTime: 2
   greetingDialogueString:
-  - 'Here you can test with different gameplay mechanics '
+  - "There\u2019s nothing more I can tell you\u2026 that\u2019s all I know."
   greetingDialogueAudio:
   - {fileID: 8300000, guid: f12c6bb773fa687499977710abc77114, type: 3}
   dialogueString: []

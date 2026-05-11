@@ -20,11 +20,13 @@ MonoBehaviour:
   - {fileID: 8300000, guid: f12c6bb773fa687499977710abc77114, type: 3}
   dialogueString:
   - This is a test dialogue...
+  - Welcome to "Player_01"
   dialogueAudio:
+  - {fileID: 8300000, guid: f12c6bb773fa687499977710abc77114, type: 3}
   - {fileID: 8300000, guid: f12c6bb773fa687499977710abc77114, type: 3}
   dialogueIndex: 0
   farewellDialogueString:
-  - Welcome to "Player_01"
+  - 'Here you can test with different gameplay mechanics '
   farewellDialogueAudio:
   - {fileID: 8300000, guid: f12c6bb773fa687499977710abc77114, type: 3}
   setStageIndex: 1

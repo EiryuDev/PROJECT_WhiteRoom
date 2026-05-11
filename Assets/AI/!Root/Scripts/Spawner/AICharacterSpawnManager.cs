@@ -1,4 +1,5 @@
 using UnityEngine;
+using WEV.WhiteRoom;
 
 namespace WEV.WhiteRoom
 {
@@ -9,55 +10,52 @@ namespace WEV.WhiteRoom
         [SerializeField] GameObject instantiatedGameObject; // Reference to the instantiated game object
         private AICharacterManager aiCharacter;
 
-        [Header("PATROL")] 
+        [Header("PATROL")]
         [SerializeField] private bool hasPatrolPath = false;
         [SerializeField] private int patrolPathID = 0;
-        
+
         private void Start()
         {
             CoreAIManager.instance.SpawnCharacter(this);
             gameObject.SetActive(false);
         }
+
         public void AttemptToSpawnCharacter()
         {
-            if(characterGameObject != null)
+            if (characterGameObject != null)
             {
-                instantiatedGameObject = Instantiate(characterGameObject);  
+                instantiatedGameObject = Instantiate(characterGameObject);
                 instantiatedGameObject.transform.position = transform.position;
                 instantiatedGameObject.transform.rotation = transform.rotation;
                 aiCharacter = instantiatedGameObject.GetComponent<AICharacterManager>();
 
                 if (aiCharacter == null)
                     return;
-                
-                CoreAIManager.instance.AddCharacterToSpawnedCharacterList(aiCharacter);
-                
-                if(hasPatrolPath)
-                    aiCharacter.idle.aiCharacterPatrolPath = CoreAIManager.instance.GetAICharacterPatrolPathByID(patrolPathID);
 
-                //aiCharacter.aiCharacterNetworkManager.isActive.Value = false;
+                CoreAIManager.instance.AddCharacterToSpawnedCharacterList(aiCharacter);
+
+                if (hasPatrolPath)
+                    aiCharacter.idle.aiCharacterPatrolPath = CoreAIManager.instance.GetAICharacterPatrolPathByID(patrolPathID);
             }
         }
+
         public void ResetCharacter()
         {
-            if(instantiatedGameObject == null)
+            if (instantiatedGameObject == null)
                 return;
-            
-            if(aiCharacter == null)
+
+            if (aiCharacter == null)
                 return;
-            
+
             instantiatedGameObject.transform.position = transform.position;
             instantiatedGameObject.transform.rotation = transform.rotation;
-            aiCharacter.characterStatsManager.currentHealth =
-                aiCharacter.characterStatsManager.maxHealth;
-            aiCharacter.aiCharacterCombatManager.SetTarget(null);
+            aiCharacter.aiCharacterStatsManager.currentHealth = aiCharacter.aiCharacterStatsManager.maxHealth;
 
             if (aiCharacter.isDead)
             {
                 aiCharacter.isDead = false;
                 aiCharacter.characterAnimatorManager.PlayTargetActionAnimation
                     ("Empty", false, false, true, true);
-                aiCharacter.currentState.SwitchState(aiCharacter, aiCharacter.idle);
             }
 
             aiCharacter.aiCharacterUIManager.ResetCharacterHPBar();
