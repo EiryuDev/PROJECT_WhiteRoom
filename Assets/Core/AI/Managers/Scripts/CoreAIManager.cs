@@ -29,6 +29,9 @@ namespace WEV.WhiteRoom
         [Header("PATROL PATHS")]
         [SerializeField] List<AICharacterPatrolPath> aiCharacterPatrolPaths = new List<AICharacterPatrolPath>();
 
+        [Header("Dialogue Interactable Prefab Settings")]
+        public GameObject dialogueInteractable;
+
         private void Awake()
         {
             if (instance == null)

@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using UnityEngine;
 
 namespace WEV.WhiteRoom
@@ -38,10 +39,21 @@ namespace WEV.WhiteRoom
         public CharacterSaveData characterSlot09;
         public CharacterSaveData characterSlot10;
 
+        [Header("Stage IDs Settings")]
+        public int robiDialogueStageID = 0;
+
+        [Header("Dialogue Settings")]
+        [SerializeField] List<CharacterDialogue> robiDialogues = new List<CharacterDialogue>();
+
         private void Awake()
         {
-            if (instance == null) instance = this;
-            else { Destroy(gameObject); return; }
+            if (instance == null) 
+                instance = this;
+            else 
+            { 
+                Destroy(gameObject);
+                return; 
+            }
         }
 
         private void Start()
@@ -53,8 +65,17 @@ namespace WEV.WhiteRoom
 
         private void Update()
         {
-            if (saveGame) { saveGame = false; SaveGame(); }
-            if (loadGame) { loadGame = false; LoadGame(); }
+            if (saveGame) 
+            { 
+                saveGame = false;
+                SaveGame();
+            }
+
+            if (loadGame) 
+            { 
+                loadGame = false;
+                LoadGame();
+            }
         }
 
         // ── UNCHANGED METHODS ─────────────────────────────────────────
@@ -217,6 +238,65 @@ namespace WEV.WhiteRoom
         {
             if (lockTargetFrameRate)
                 Application.targetFrameRate = 60;
+        }
+
+        // BELOW CODE: Load Dialogue Based On Stage ID
+        public CharacterDialogue GetCharacterDialogueByEnum(CharacterDialogueID characterDialogue)
+        {
+            CharacterDialogue dialogue = null;
+
+            switch (characterDialogue)
+            {
+                case CharacterDialogueID.NoDialogueID:
+                    break;
+                case CharacterDialogueID.RobiDialogueID:
+                    dialogue = FindDialogueByStageID(robiDialogueStageID, robiDialogues);
+                    break;;
+                default:
+                    break;
+            }
+
+            if (dialogue != null)
+                dialogue = Instantiate(dialogue);
+
+            return dialogue;
+        }
+
+        private CharacterDialogue FindDialogueByStageID(int stageID, List<CharacterDialogue> dialogueList)
+        {
+            CharacterDialogue dialogue = null;
+            for (int i = 0; i < dialogueList.Count; i++)
+            {
+                if (dialogueList[i] == null)
+                    continue;
+
+                if (dialogueList[i].requiredStageID == stageID)
+                {
+                    dialogue = dialogueList[i];
+                    break;
+                }
+            }
+
+            return dialogue;
+        }
+
+        public void SetStageOfDialogue(CharacterDialogueID characterDialogue, int stageIndex)
+        {
+            switch (characterDialogue)
+            {
+                case CharacterDialogueID.NoDialogueID:
+                    break;
+                case CharacterDialogueID.RobiDialogueID:
+                    robiDialogueStageID = stageIndex;
+                    currentCharacterData.robiStageID = robiDialogueStageID;
+                    break;
+                default:
+                    break;
+            }
+        }
+        private void GetStageIDOnLoad()
+        {
+            robiDialogueStageID = currentCharacterData.robiStageID;
         }
     }
 }

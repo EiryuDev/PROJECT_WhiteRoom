@@ -44,7 +44,11 @@ namespace WEV.WhiteRoom
         public List<CharacterSerializableWeapon> weaponsInInventory;
 
         [Header("Doors Settings")]
-        public List<string> doorsOpened; 
+        public List<string> doorsOpened;
+
+        [Header("Dialogue Settings")]
+        // TO-DO: Use a serializable dictionary here to save values (ID and stages #) for many NPCs
+        public int robiStageID = 0;
 
         public CharacterSaveData()
         { 

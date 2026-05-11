@@ -81,4 +81,23 @@ namespace WEV.WhiteRoom
         Idle, 
         Patrol
     }
+
+    // Dialogue
+    public enum CharacterDialogueID
+    {
+        NoDialogueID,
+        RobiDialogueID,
+    }
+
+    public enum CharacterDialogueEndEvents
+    {
+        None,
+        Robi
+    }
+
+    public enum CharacterDialogueType
+    {
+        Standalone,
+        Hover
+    }
 }

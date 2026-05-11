@@ -1399,10 +1399,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Core Scene Manager
       objectReference: {fileID: 0}
-    - target: {fileID: 5981883921717186670, guid: ac488a2b538c1584f8e9a26900cf7154, type: 3}
-      propertyPath: world
-      value: Sewer
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -1473,6 +1469,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2272722847817323103, guid: 1c4e20898f9354040bf952b8cc92d75a, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2351878582503333407, guid: 1c4e20898f9354040bf952b8cc92d75a, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3152939983670993406, guid: 1c4e20898f9354040bf952b8cc92d75a, type: 3}
       propertyPath: m_Pivot.x
       value: 0
@@ -1553,9 +1557,49 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4283476209040453185, guid: 1c4e20898f9354040bf952b8cc92d75a, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5121597544245911325, guid: 1c4e20898f9354040bf952b8cc92d75a, type: 3}
       propertyPath: m_Name
       value: Player UI Manager
+      objectReference: {fileID: 0}
+    - target: {fileID: 5878203774513957498, guid: 1c4e20898f9354040bf952b8cc92d75a, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5878203774513957498, guid: 1c4e20898f9354040bf952b8cc92d75a, type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5878203774513957498, guid: 1c4e20898f9354040bf952b8cc92d75a, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5878203774513957498, guid: 1c4e20898f9354040bf952b8cc92d75a, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6768353877601493584, guid: 1c4e20898f9354040bf952b8cc92d75a, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6768353877601493584, guid: 1c4e20898f9354040bf952b8cc92d75a, type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6768353877601493584, guid: 1c4e20898f9354040bf952b8cc92d75a, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6768353877601493584, guid: 1c4e20898f9354040bf952b8cc92d75a, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7235664491518746474, guid: 1c4e20898f9354040bf952b8cc92d75a, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

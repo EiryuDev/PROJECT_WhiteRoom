@@ -69,8 +69,11 @@ MonoBehaviour:
     coreItemsLooted:
       keys: 
       values: 
+    regularItemsInInventory: []
+    vitalItemsInInventory: []
     weaponsInInventory: []
     doorsOpened: []
+    robiStageID: 0
   characterSlot01:
     sceneIndex: 1
     characterName: Eiryu
@@ -90,8 +93,11 @@ MonoBehaviour:
     coreItemsLooted:
       keys: 
       values: 
+    regularItemsInInventory: []
+    vitalItemsInInventory: []
     weaponsInInventory: []
     doorsOpened: []
+    robiStageID: 0
   characterSlot02:
     sceneIndex: 1
     characterName: Eiryu
@@ -111,8 +117,11 @@ MonoBehaviour:
     coreItemsLooted:
       keys: 
       values: 
+    regularItemsInInventory: []
+    vitalItemsInInventory: []
     weaponsInInventory: []
     doorsOpened: []
+    robiStageID: 0
   characterSlot03:
     sceneIndex: 1
     characterName: Eiryu
@@ -132,8 +141,11 @@ MonoBehaviour:
     coreItemsLooted:
       keys: 
       values: 
+    regularItemsInInventory: []
+    vitalItemsInInventory: []
     weaponsInInventory: []
     doorsOpened: []
+    robiStageID: 0
   characterSlot04:
     sceneIndex: 1
     characterName: Eiryu
@@ -153,8 +165,11 @@ MonoBehaviour:
     coreItemsLooted:
       keys: 
       values: 
+    regularItemsInInventory: []
+    vitalItemsInInventory: []
     weaponsInInventory: []
     doorsOpened: []
+    robiStageID: 0
   characterSlot05:
     sceneIndex: 1
     characterName: Eiryu
@@ -174,8 +189,11 @@ MonoBehaviour:
     coreItemsLooted:
       keys: 
       values: 
+    regularItemsInInventory: []
+    vitalItemsInInventory: []
     weaponsInInventory: []
     doorsOpened: []
+    robiStageID: 0
   characterSlot06:
     sceneIndex: 1
     characterName: Eiryu
@@ -195,8 +213,11 @@ MonoBehaviour:
     coreItemsLooted:
       keys: 
       values: 
+    regularItemsInInventory: []
+    vitalItemsInInventory: []
     weaponsInInventory: []
     doorsOpened: []
+    robiStageID: 0
   characterSlot07:
     sceneIndex: 1
     characterName: Eiryu
@@ -216,8 +237,11 @@ MonoBehaviour:
     coreItemsLooted:
       keys: 
       values: 
+    regularItemsInInventory: []
+    vitalItemsInInventory: []
     weaponsInInventory: []
     doorsOpened: []
+    robiStageID: 0
   characterSlot08:
     sceneIndex: 1
     characterName: Eiryu
@@ -237,8 +261,11 @@ MonoBehaviour:
     coreItemsLooted:
       keys: 
       values: 
+    regularItemsInInventory: []
+    vitalItemsInInventory: []
     weaponsInInventory: []
     doorsOpened: []
+    robiStageID: 0
   characterSlot09:
     sceneIndex: 1
     characterName: Eiryu
@@ -258,8 +285,11 @@ MonoBehaviour:
     coreItemsLooted:
       keys: 
       values: 
+    regularItemsInInventory: []
+    vitalItemsInInventory: []
     weaponsInInventory: []
     doorsOpened: []
+    robiStageID: 0
   characterSlot10:
     sceneIndex: 1
     characterName: Eiryu
@@ -279,5 +309,12 @@ MonoBehaviour:
     coreItemsLooted:
       keys: 
       values: 
+    regularItemsInInventory: []
+    vitalItemsInInventory: []
     weaponsInInventory: []
     doorsOpened: []
+    robiStageID: 0
+  robiDialogueStageID: 0
+  robiDialogues:
+  - {fileID: 11400000, guid: f06e3793184fdbb468e6c86b4dc0f309, type: 2}
+  - {fileID: 11400000, guid: 46860081f308ef44b928cc2833846381, type: 2}

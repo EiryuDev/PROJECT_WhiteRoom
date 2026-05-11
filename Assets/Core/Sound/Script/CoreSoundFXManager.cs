@@ -12,7 +12,8 @@ namespace WEV.WhiteRoom
         [Header("ACTION SOUNDS")]
         public AudioClip pickUpItemSFX; // Sound effect for picking up the item
 
-        [Header("UI SOUNDS")] 
+        [Header("UI SOUNDS")]
+        public AudioClip unableToContinueUISFX;
         public AudioClip hoverUISFX;
         public AudioClip confirmUISFX;
         public AudioClip cancelSFX;
